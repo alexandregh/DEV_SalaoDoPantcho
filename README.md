@@ -3,7 +3,7 @@
 ###### Versão 1.0
 
 ###### Descrição:
-<p>Projeto Web de um Salão Barbershop chamado Salão do Pantcho.</p><br />
+<p>Projeto Web de um Salão Barbershop chamado Salão do Pantcho.</p>
 <p>O Sistema consiste na Interação e Gerenciamento de todas as funcionalidades providas pelo sistema por parte dos seus Clientes e Administradores.</p>
 
 ###### Detalhes Técnicos:
