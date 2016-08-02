@@ -20,7 +20,7 @@
 **CatalogoLivros.Interfaces:** camada responsável por todas as Assinaturas dos Métodos (Funcionalidades) que são implementados na camada CatalogoLivros.DAL; <br />
 **CatalogoLivros.DAL:** camada responsável pela manipulação de dados; **CatalogoLivros.SGBDDAL:** camada responsável pela fonte de acesso dos dados).
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
-**Camada de Entidades:** a Camada de Entidades contém todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações e Restrições. 1*
+**Camada de Entidades:** a Camada de Entidades contém todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações e Restrições. 1*<br />
 **Camada do Sistema:** a Camada do Sistema subdivide-se em subcamadas a saber:<br />
 <p>1.1 - Camada de Apresentação</p>
 <p>1.2 - Camada de Aplicação</p>
