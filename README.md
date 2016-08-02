@@ -21,10 +21,10 @@
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
 **1 - Camada de Entidades:** a Camada de Entidades contém todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações. 1<br />
 **2 - Camada do Sistema:** a Camada do Sistema subdivide-se em subcamadas a saber:<br />
-<p>**2.1 - Camada de Apresentação**</p>
-<p>**2.2 - Camada de Aplicação**</p>
-<p>**2.3 - Camada de Domínio**</p>
-<p>**2.4 - Camada de Infraestrutura**</p>
+**2.1 - Camada de Apresentação**
+**2.2 - Camada de Aplicação**
+**2.3 - Camada de Domínio**
+**2.4 - Camada de Infraestrutura**</p>
 <p>A Camada de Infraestrutura subdivide-se em subcamadas a saber:<br />
 
 <p>1: No DDD - Domain Driven Design disposto por Eric Evans todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações e Restrições ficam dispostas sempre na Camada de Domínio (Domain Layer) da aplicação o que é a maneira padrão de se implementar o DDD - Domain Driven Design.<br />Optei por dispor a Camada de Entidades fora da Camada do Sistema e consequentemente fora da Camada de Domínio (Domain Layer) por essas Entidades (Objetos) de Negócio estarem externos a implementação do sistema pois independente do sistema existir na forma de aplicação, Entidades (Objetos) de Negócio e suas Regras sempre existirão no Contexto de Negócio.</p>
