@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9059A9FC-DECE-4CEA-BAA6-62FEE8611FBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalaoDoPantcho.App</RootNamespace>
+    <AssemblyName>SalaoDoPantcho.App</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppServices\AppServicesBases\AppServicesBase.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesAcessorios\AppServicesAcessorio.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesAdministradores\AppServicesAdministrador.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesClientes\AppServicesCliente.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesDatasComemorativas\AppServicesDataComemorativa.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesEnderecosAdministradores\AppServicesEnderecosAdministrador.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesEnderecosClientes\AppServicesEnderecosCliente.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesProdutos\AppServicesProduto.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesPromocoes\AppServicesPromocao.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesServicos\AppServicesServico.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesTelefonesAdministradores\AppServicesTelefonesAdministrador.cs" />
+    <Compile Include="AppServices\AppServicesEntity\AppServicesTelefonesClientes\AppServicesTelefonesCliente.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesBases\IContractsAppServicesBase.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesAcessorios\IContractsAppServicesAcessorio.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesAdministradores\IContractsAppServicesAdministrador.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesClientes\IContractsAppServicesCliente.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesDatasComemorativas\IContractsAppServicesDataComemorativa.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesEnderecosAdministradores\IContractsAppServicesEnderecosAdministrador.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesEnderecosClientes\IContractsAppServicesEnderecosCliente.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesProdutos\IContractsAppServicesProduto.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesPromocoes\IContractsAppServicesPromocao.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesServicos\IContractsAppServicesServico.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesTelefonesAdministradores\IContractsAppServicesTelefonesAdministrador.cs" />
+    <Compile Include="IContractsAppServices\IContractsAppServicesEntity\IContractsAppServicesTelefonesClientes\IContractsAppServicesTelefonesCliente.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SalaoDoPantcho.Domain\SalaoDoPantcho.Domain.csproj">
+      <Project>{7e0cc65c-31c5-42a7-9958-12ea643b7f22}</Project>
+      <Name>SalaoDoPantcho.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalaoDoPantcho.Entity\SalaoDoPantcho.Entity.csproj">
+      <Project>{1c91532c-90b3-424b-91f3-ea9b5bead2c7}</Project>
+      <Name>SalaoDoPantcho.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

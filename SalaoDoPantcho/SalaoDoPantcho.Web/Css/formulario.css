@@ -1,0 +1,46 @@
+﻿.formcontato {
+    display: block;
+    width:90%;
+    padding: 5px 10px 5px 10px;
+    margin: 0 0 10px 5%;
+    border: 8px groove #F57744;
+    border-radius: 6px 6px;
+    background-image:url('../Imagens/Conteudo/backgroundform.jpg');
+}
+.textareacontato {
+    display:block;
+    width: 100%;
+}
+.txtformulariodecontato {
+    text-indent: 0;
+    font-size: 22px;
+    text-align: center;
+}
+.txtOK {
+    display:block;
+    width:89%;
+    color:#0b6b03;
+    font-weight: bold;
+    text-align: right;
+    background-color:yellow;
+}
+.txtErro {
+    color:red;
+    font-weight:bold;
+}
+.voltarpagina {
+    display:block;
+    position:relative;
+}
+#frmLogin {
+    display: block;
+}
+#frmRecuperacao {
+    display:none;
+}
+#btnResgatarDadosCliente {
+    top:-34px; 
+    margin-right:14px; 
+    position:relative; 
+    float:right;
+}

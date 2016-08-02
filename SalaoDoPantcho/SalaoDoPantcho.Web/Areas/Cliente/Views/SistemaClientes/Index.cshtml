@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Salão do Pantcho - Área Restrita do Cliente";
+    Layout = "~/Areas/Cliente/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <section class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Seja bem-vindo a Área Restrita do Cliente</h5><br />
+        <article>
+            <p>
+                Disponibilizamos à você <span style="text-transform:capitalize">@ViewBag.Nome</span> uma área exclusiva onde poderá gerenciar - da melhor forma possível -
+                sua <strong>Conta de Acesso</strong> em nosso sistema. Oferecemos à você esse espaço, que é só seu, com
+                o objetivo de gerenciar sua própria <strong>Conta de Acesso</strong> da melhor forma possível e do seu jeito.
+            </p>
+            <p>
+                Sua <strong>Conta de Acesso</strong> contém todas as suas informações necessárias que foi efetivada por
+                você mesmo(s) no ato de seu cadastro em nosso sistema. Cada cliente que efetivar seu cadastro junto ao
+                nosso sistema, terá sua própria Conta de Acesso exclusiva.
+            </p>
+            <p>
+                Nenhum outro cliente poderá ter acesso as suas informações com a finalidade de modifica-las, excluí-las,
+                ou fazer uso indevido dessas para seu uso pessoal ou coletivo, porém é necessário que você tome alguns
+                cuidados. Para saber quis cuidados tomar, clique
+                <a href="/Cliente/SistemaClientes/CuidadosContaAcesso/" title="Cuidados com a Conta de Acesso">aqui</a>.
+            </p>
+            <p>
+                Clique <a href="/Cliente/SistemaClientes/ListaOperacoes/" type="Operações da sua Conta de Acesso">aqui</a> e
+                tenha disponibilizadas todas as <strong><em>Operações</em></strong> necessárias para o devido
+                gerenciamento de suas informações.
+            </p>
+            <br />
+        </article>
+    </section>
+    <aside class="row">
+        <div class="col-sm-4 login">
+            <article>
+                @using (Html.BeginForm("Sair", "SistemaClientes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken();
+                    <p>Nome: <span style="text-transform:capitalize">@ViewBag.Nome</span></p>
+                    <p>Login: <span style="text-transform:capitalize">@ViewBag.Login</span></p>
+                    <p>Perfil: <span style="text-transform:capitalize">@ViewBag.Perfil</span></p>
+                    <input type="submit" class="btn btn-danger" style="margin-left:25px;" value="Sair" /><br />
+                }
+                @{ 
+                    if (!string.IsNullOrEmpty(@TempData["MensagemAviso"].ToString()))
+                    {
+                        <div class="alert alert-warning" style="text-align:center; margin-top:10px;" role="alert">
+                            @TempData["MensagemAviso"]
+                        </div>
+                    }
+                    else
+                    {
+                        <div></div>
+                    }
+                }
+            </article>
+        </div>
+    </aside>
+</section>

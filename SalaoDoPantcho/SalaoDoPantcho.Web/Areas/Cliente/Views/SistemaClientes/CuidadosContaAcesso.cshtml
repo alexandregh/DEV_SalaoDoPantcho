@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Salão do Pantcho - Cuidados com a Conta de Acesso do Cliente";
+    Layout = "~/Areas/Cliente/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <section class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Área Restrita do Cliente - Cuidados com a Conta de Acesso</h5><br />
+        <article>
+            <p>
+                Uma Conta de Acesso, também conhecida como "Conta de Usuário" e "Conta de Login", corresponde à identificação 
+                única de um usuário ou grupos de usuários em um computador, serviço ou aplicação ou sistema. Por meio das Contas 
+                de Acesso é possível que um mesmo computador ou serviço ou aplicação seja compartilhado por diversos usuários, 
+                pois permite, por exemplo, identificar unicamente cada usuário, separar as configurações específicas de cada um 
+                e controlar cada permissões de acesso a um sistema, por exemplo.
+            </p>
+            <p>
+                <cite>
+                    "Uma senha, ou password, serve para autenticar uma conta, ou seja, é usada no processo de verificação da sua identidade,
+                    assegurando que você é realmente quem diz ser e que possui o direito de acessar o recurso em questão. É um dos principais
+                    mecanismos de autenticação usados na Internet devido, principalmente, a simplicidade que possui.".
+                </cite>
+            </p>
+            <div class="listaseguranca">
+                <h6>Cuidados a serem tomados ao usar suas contas e senhas:</h6>
+                <p>
+                    <ul>
+                        <li>
+                            <cite>
+                                "certifique-se de não estar sendo observado ao digitar as suas senhas;"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "não forneça as suas senhas para outra pessoa, em hipótese alguma;"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "certifique-se de fechar a sua sessão ao acessar sites que requeiram o uso de senhas.
+                                Use a opção de sair (logout), pois isto evita que suas informações sejam mantidas no
+                                navegador;"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "elabore boas senhas, conforme descrito na Seção 8.2<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>);"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "altere as suas senhas sempre que julgar necessário, conforme descrito na Seção 8.3<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>);"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "não use a mesma senha para todos os serviços que acessa (dicas de gerenciamento de senhas
+                                são fornecidas na Seção 8.4<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>));"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "ao usar perguntas de segurança para facilitar a recuperação de senhas, evite escolher questões
+                                cujas respostas possam ser facilmente adivinhadas (mais detalhes na Seção 8.5<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>));"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "certifique-se de utilizar serviços criptografados quando o acesso a um site envolver o fornecimento de
+                                senha (mais detalhes na Seção 10.1 do Capítulo Uso seguro da Internet<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>));
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "procure manter sua privacidade, reduzindo a quantidade de informações que possam ser coletadas sobre você, pois elas podem ser
+                                usadas para adivinhar a sua senha, caso você não tenha sido cuidadoso ao elaborá-la (mais detalhes no Capítulo Privacidade<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>));"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "mantenha a segurança do seu computador (mais detalhes no Capítulo Segurança de computadores<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>));"
+                            </cite>
+                        </li>
+                        <li>
+                            <cite>
+                                "seja cuidadoso ao usar a sua senha em computadores potencialmente infectados ou comprometidos. Procure, sempre que possível, utilizar
+                                opções de navegação anônima (mais detalhes na Seção 12.3 do Capítulo Segurança de computadores<br />
+                                (fonte: <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Cartilha de Segurança para Internet">Cartilha de Segurança para Internet</a>))."
+                            </cite>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+            <p>
+                <br />Para mais detalhes e outros assuntos relacionados com a <strong>Segurança na Internet</strong> clique <a href="http://cartilha.cert.br/senhas/" target="_blank" title="Segurança na Internet">aqui</a>.
+            </p>
+            <br />
+            <a href="/Cliente/SistemaClientes" class="btn btn-link">Voltar</a>
+        </article>
+    </section>
+    <aside class="row">
+        <div class="col-sm-4 login">
+            <article>
+                @using (Html.BeginForm("Sair", "SistemaClientes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken();
+                    <p>Nome: <span style="text-transform:capitalize">@ViewBag.Nome</span></p>
+                    <p>Login: <span style="text-transform:capitalize">@ViewBag.Login</span></p>
+                    <p>Perfil: <span style="text-transform:capitalize">@ViewBag.Perfil</span></p>
+                    <input type="submit" class="btn btn-danger" style="margin-left:25px;" value="Sair" /><br />
+                }
+                @{
+                    if (!string.IsNullOrEmpty(@TempData["MensagemAviso"].ToString()))
+                    {
+                        <div class="alert alert-warning" style="text-align:center; margin-top:10px;" role="alert">
+                            @TempData["MensagemAviso"]
+                        </div>
+                    }
+                    else
+                    {
+                        <div></div>
+                    }
+                }
+            </article>
+        </div>
+    </aside>
+</section>

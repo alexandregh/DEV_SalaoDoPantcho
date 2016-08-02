@@ -1,0 +1,114 @@
+﻿@model SalaoDoPantcho.Web.Areas.Cliente.Models.ViewModelPesquisaEndereco
+@{
+    ViewBag.Title = "Salão do Pantcho - Pesquisa de Endereço Por Cep";
+    Layout = "~/Areas/Cliente/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <section class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Área Restrita do Cliente - Pesquisa dos Dados do Cliente Por Cep</h5><br />
+        <div class="txtErro">
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-sm-4 formcontato" id="frmLogin">
+            <h6 class="txtformulariodecontato">Formulário de Pesquisa de Cliente Por Cep</h6><hr />
+            @if (@TempData["MensagemSucesso"] != null)
+            {
+                <div class="alert alert-success" style="text-align:center;" role="alert">
+                    @TempData["MensagemSucesso"]
+                </div>
+            }
+            @if (@TempData["MensagemErro"] != null)
+            {
+                <div class="alert alert-danger" style="text-align:center;" role="alert">
+                    @TempData["MensagemErro"]
+                </div>
+            }
+            @using (Html.BeginForm("PesquisarEnderecoPorCep", "SistemaClientes", FormMethod.Get))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(cliente => cliente.Cep, new { @for = "cep" })<br />
+                    @Html.TextBoxFor(cliente => cliente.Cep, new { @type = "text", @class = "form-control", @id = "cep", @placeholder = "Digite seu CEP...", @accesskey = "1" })
+                </div>
+                <input type="submit" class="btn btn-primary" value="Pesquisar" alt="Pesquisar" title="Pesquisar" /><br />
+            }
+        </div>
+    </section>
+    <aside class="row">
+        <div class="col-sm-4 login">
+            <article>
+                @using (Html.BeginForm("Sair", "SistemaClientes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken();
+                    <p>Nome: <span style="text-transform:capitalize">@ViewBag.Nome</span></p>
+                    <p>Login: <span style="text-transform:capitalize">@ViewBag.Login</span></p>
+                    <p>Perfil: <span style="text-transform:capitalize">@ViewBag.Perfil</span></p>
+                    <input type="submit" class="btn btn-danger" style="margin-left:25px;" value="Sair" /><br />
+                }
+            </article>
+        </div>
+    </aside>
+    @if (Model != null)
+    {
+        <section class="row">
+            <div class="col-sm-10 col-sm-push-1 listadadoscliente">
+                <h5>Dados do Endereço do Cliente</h5><br />
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(endereco => endereco.Descricao)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(cliente => cliente.NumeroEnd)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(cliente => cliente.Complemento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(cliente => cliente.Bairro)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(cliente => cliente.Cep)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(cliente => cliente.TipoEndereco)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-transform:capitalize;">
+                                @Html.DisplayFor(modelDadosCliente => modelDadosCliente.Descricao)
+                            </td>
+                            <td style="text-transform:uppercase;">
+                                @Html.DisplayFor(modelDadosCliente => modelDadosCliente.NumeroEnd)
+                            </td>
+                            <td style="text-transform:lowercase;">
+                                @Html.DisplayFor(modelDadosCliente => modelDadosCliente.Complemento)
+                            </td>
+                            <td style="text-transform:capitalize;">
+                                @Html.DisplayFor(modelDadosCliente => modelDadosCliente.Bairro)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelDadosCliente => modelDadosCliente.Cep)
+                            </td>
+                            <td style="text-transform:capitalize;">
+                                @Html.DisplayFor(modelDadosCliente => modelDadosCliente.TipoEndereco)
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+    }
+    <aside class="col-sm-8">
+        <a class="btn btn-link" href="/Cliente/SistemaClientes/ListaOperacoes">Voltar</a>
+    </aside>
+</section>

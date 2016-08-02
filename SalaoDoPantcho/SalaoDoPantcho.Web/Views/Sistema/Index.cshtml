@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Salão do Pantcho - Sistema";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <section class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Sistema - Área Restrita</h5><br />
+        <article>
+            <p>
+                O <strong>Salão do Pantcho</strong> disponibiliza uma <strong><em>Área Restrita</em></strong> onde
+                dois <em>Perfis de Usuários</em> podem fazer login no sistema: Administrador e Cliente.
+            </p>
+            <p>
+                <em>Administrador:</em> esse Perfil de Usuário tem como característica o(s) usuário(s) que administram
+                e gerenciam todas as atividades do sistema do <strong>Salão do Pantcho</strong>. Somente o 
+                <em>Administrador do Sistema</em> poderá ter todo o controle do mesmo não sendo possível que outros 
+                usuários com perfil diferente possa realizar tais atividades.
+            </p>
+            <p>
+                <em>Cliente:</em> esse Perfil de Usuário tem como característica o(s) usuário(s) que são clientes do
+                <strong>Salão do Pantcho</strong> e possuem seu cadastro no sistema com todas as suas informações 
+                requeridas para o mesmo. Cada ussuário com o perfil de Cliente terá uma conta única e exclusiva no
+                sistema.
+            </p>
+            <p>
+                Acesse seu <em>Perfil de Usuário</em> logo abaixo:
+            </p>
+            <p><a class="btn btn-link" href="/Administrador/Administrador">Administrador</a></p>
+            <p><a class="btn btn-link" href="/SistemaCliente/">Cliente</a></p>
+        </article>
+    </section>
+</section>

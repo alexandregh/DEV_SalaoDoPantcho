@@ -1,0 +1,52 @@
+﻿@model SalaoDoPantcho.Web.Areas.Cliente.Models.ViewModelClienteAtivarDesativar
+@{
+    ViewBag.Title = "AtivaDesativa";
+    Layout = "~/Areas/Cliente/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <div class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Área Restrita do Cliente - Ativação/Desativação da Conta do Cliente</h5><br />
+        <div class="txtErro">
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-sm-4 formcontato" id="frmLogin">
+            <h6 class="txtformulariodecontato">Formulário de Ativação/Desativação</h6><hr />
+            @if (@TempData["MensagemSucesso"] != null)
+            {
+                <div class="alert alert-success" style="text-align:center;" role="alert">
+                    @TempData["MensagemSucesso"]
+                </div>
+            }
+            @if (@TempData["MensagemErro"] != null)
+            {
+                <div class="alert alert-danger" style="text-align:center;" role="alert">
+                    @TempData["MensagemErro"]
+                </div>
+            }
+            @using (Html.BeginForm("AtivarDesativarCliente", "SistemaClientes", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+                <div class="form-group">
+                    @Html.LabelFor(cliente => cliente.Login, new { @for = "login" })<br />
+                    @Html.TextBoxFor(cliente => cliente.Login, new { @type = "text", @class = "form-control", @id = "login", @placeholder = "Digite seu login...", @accesskey = "1" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(cliente => cliente.Senha, new { @for = "senha" })<br />
+                    @Html.PasswordFor(cliente => cliente.Senha, new { @type = "password", @class = "form-control", @id = "senha", @placeholder = "Digite sua senha...", @accesskey = "5" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(cliente => cliente.StatusCliente, new { @for = "statuscliente" })<br />
+                    @Html.EnumDropDownListFor(cliente => cliente.StatusCliente, "---Selecione o Status do Cliente---", new { @class = "form-control", @id = "statuscliente", @placeholder = "Informe o Status do Cliente...", @accesskey = "10" })
+                </div>
+                <input type="submit" class="btn btn-primary" value="Login" alt="Login" title="Login" /><br />
+            }
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <a class="btn btn-link" href="/Cliente/SistemaClientes/ListaOperacoes">Voltar</a>
+    </div>
+</section>

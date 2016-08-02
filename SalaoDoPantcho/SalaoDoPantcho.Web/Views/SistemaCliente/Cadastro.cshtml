@@ -1,0 +1,116 @@
+﻿@model SalaoDoPantcho.Web.Models.Sistema.Clientes.ViewModelClientesInserir
+@{
+    ViewBag.Title = "Salão do Pantcho - Cadastrar Cliente";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <section class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Cadastro do Cliente</h5><br />
+        @using (Html.BeginForm("CadastrarCliente", "SistemaCliente", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken();
+            <div class="txtErro">
+                @Html.ValidationSummary()
+            </div>
+            <section class="col-sm-4 formcontato">
+                <h6 class="txtformulariodecontato">Formulário de Cadastro</h6><hr />
+                @if (@TempData["MensagemSucesso"] != null)
+                {
+                    <div class="alert alert-success" style="text-align:center;" role="alert">
+                        @TempData["MensagemSucesso"]
+                    </div>
+                }
+                @if (@TempData["MensagemErro"] != null)
+                {
+                    <div class="alert alert-danger" style="text-align:center;" role="alert">
+                        @TempData["MensagemErro"]
+                    </div>
+                }
+                <div id="horizontalTab">
+                    <ul>
+                        <li><a href="#tab-1" class="btn btn-warning">Dados do Cliente</a></li>
+                        <li><a href="#tab-2" class="btn btn-warning">Endereço do Cliente</a></li>
+                        <li><a href="#tab-3" class="btn btn-warning">Contato do Cliente</a></li>
+                    </ul>
+                    <div id="tab-1">
+                        <h6 style="text-indent:0;">Dados do Cliente</h6>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Nome, new { @for = "nome" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Nome, new {@type = "text", @class = "form-control", @id = "nome", @placeholder = "Digite seu nome...", @autofocus = "true", @accesskey = "1" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Apelido, new { @for = "apelido" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Apelido, new { @type = "text", @class = "form-control", @id = "apelido", @placeholder = "Digite seu apelido...", @accesskey = "5" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Login, new { @for = "login" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Login, new { @type = "text", @class = "form-control", @id = "login", @placeholder = "Digite seu login...", @accesskey = "10" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Senha, new { @for = "senha" })<br />
+                            @Html.PasswordFor(cliente => cliente.Senha, new { @type = "password", @class = "form-control", @id = "senha", @placeholder = "Digite sua senha...", @accesskey = "15" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Genero)<br />
+                            @Html.EnumDropDownListFor(cliente => cliente.Genero, "Informe o sexo...", new { @class = "form-control", @accesskey = "20" })
+                        </div>
+                        <p class="proximopasso">Próximo passo: Endereço do Cliente</p>
+                    </div>
+                    <div id="tab-2" accesskey="25">
+                        <h6 style="text-indent:0;">Endereço do Cliente</h6>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.TipoEndereco, new { @for = "tipoendereco" })<br />
+                            @Html.EnumDropDownListFor(cliente => cliente.TipoEndereco, "Informe o tipo do endereço...", new { @class = "form-control", @id = "tipoendereco", @placeholder = "Informe seu tipo do endereço...", @accesskey = "30" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Descricao, new { @for = "descricao" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Descricao, new { @type = "text", @class = "form-control", @id = "descricao", @placeholder = "Digite seu endereço...", @accesskey = "35" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.NumeroEnd, new { @for = "numeroend" })<br />
+                            @Html.TextBoxFor(cliente => cliente.NumeroEnd, new { @type = "text", @class = "form-control", @id = "numeroend", @placeholder = "Digite o número do endereço...", @accesskey = "40" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Complemento, new { @for = "complemento" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Complemento, new { @type = "text", @class = "form-control", @id = "complemento", @placeholder = "Digite o complemento do endereço...", @accesskey = "45" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Bairro, new { @for = "bairro" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Bairro, new { @type = "text", @class = "form-control", @id = "bairro", @placeholder = "Digite o bairro do endereço...", @accesskey = "50" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Cep, new { @for = "cep" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Cep, new { @type = "text", @class = "form-control", @id = "cep", @placeholder = "Digite o cep do endereço...", @accesskey = "55" })
+                        </div>
+                        <p class="proximopasso">Próximo passo: Contato do Cliente</p>
+                    </div>
+                    <div id="tab-3" accesskey="60">
+                        <h6 style="text-indent:0;">Contato do Cliente</h6>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.Email, new { @for = "e-mail" })<br />
+                            @Html.TextBoxFor(cliente => cliente.Email, new { @type = "email", @class = "form-control", @id = "e-mail", @placeholder = "Digite seu email...", @accesskey = "65" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.TipoTelefone, new { @for = "tipotelefone" })<br />
+                            @Html.EnumDropDownListFor(cliente => cliente.TipoTelefone, "Informe o tipo do Telefone...", new { @class = "form-control", @id = "tipotelefone", @placeholder = "Informe seu tipo de telefone...", @accesskey = "70" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.DDD, new { @for = "ddd" })<br />
+                            @Html.TextBoxFor(cliente => cliente.DDD, new { @type = "number", @class = "form-control", @id = "ddd", @placeholder = "Informe seu DDD...", @accesskey = "75" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(cliente => cliente.NumeroTel, new { @for = "numerotel" })<br />
+                            @Html.TextBoxFor(cliente => cliente.NumeroTel, new { @type = "number", @class = "form-control", @id = "numerotel", @placeholder = "Digite seu número de telefone...", @accesskey = "80" })
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Cadastrar" alt="Cadastrar" title="Cadastrar", accesskey="85" />
+                    </div>
+                </div>
+            </section> 
+        }
+        <a href="/SistemaCliente" class="btn btn-link">Voltar</a>
+    </section>
+</section>

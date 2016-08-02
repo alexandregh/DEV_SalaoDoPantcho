@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E0CC65C-31C5-42A7-9958-12EA643B7F22}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalaoDoPantcho.Domain</RootNamespace>
+    <AssemblyName>SalaoDoPantcho.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DomainServices\DomainServicesBases\DomainServicesBase.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesAcessorios\DomainServicesAcessorio.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesAdminitradores\DomainServicesAdminitrador.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesClientes\DomainServicesCliente.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesDatasComemorativas\DomainServicesDataComemorativa.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesEnderecosAdministradores\DomainServicesEnderecosAdministrador.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesEnderecosClientes\DomainServicesEnderecosCliente.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesProdutos\DomainServicesProduto.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesPromocoes\DomainServicesPromocao.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesServicos\DomainServicesServico.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesTelefonesAdministradores\DomainServicesTelefonesAdministrador.cs" />
+    <Compile Include="DomainServices\DomainServicesEntity\DomainServicesTelefonesClientes\DomainServicesTelefonesCliente.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesBases\IContractsDomainServicesBase.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesAcessorios\IContractsDomainServicesAcessorio.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesAdministradores\IContractsDomainServicesAdministrador.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesClientes\IContractsDomainServicesCliente.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesDatasComemorativas\IContractsDomainServicesDataComemorativa.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesEnderecosAdministradores\IContractsDomainServicesEnderecosAdministrador.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesEnderecosClientes\IContractsDomainServicesEnderecosCliente.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesProdutos\IContractsDomainServicesProduto.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesPromocoes\IContractsDomainServicesPromocao.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesServicos\IContractsDomainServicesServico.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesTelefonesAdministradores\IContractsDomainServicesTelefonesAdministrador.cs" />
+    <Compile Include="IContracts\IContractsDomainServices\IContractsDomainServicesEntity\IContractsDomainServicesTelefonesClientes\IContractsDomainServicesTelefonesCliente.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDBases\IContractsSGBDBase.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDAcessorios\IContractsSGBDAcessorio.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDAdministradores\IContractsSGBDAdministrador.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDClientes\IContractsSGBDCliente.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDDatasComemorativas\IContractsSGBDDataComemorativa.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDEnderecosAdministradores\IContractsSGBDEnderecosAdministrador.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDEnderecosClientes\IContractsSGBDEnderecosCliente.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDProdutos\IContractsSGBDProduto.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDPromocoes\IContractsSGBDPromocao.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDServicos\IContractsSGBDServico.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDTelefonesAdministradores\IContractsSGBDTelefonesAdministrador.cs" />
+    <Compile Include="IContracts\IContractsInfraEstructure\IContractsSGBD\IContractsSGBDEntity\IContractsSGBDTelefonesClientes\IContractsSGBDTelefonesCliente.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IContracts\IContractsInfraEstructure\IContractsBussinessServices\IContractsBussinessServicesBases\" />
+    <Folder Include="IContracts\IContractsInfraEstructure\IContractsBussinessServices\IContractsBussinessServicesEntity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SalaoDoPantcho.Entity\SalaoDoPantcho.Entity.csproj">
+      <Project>{1c91532c-90b3-424b-91f3-ea9b5bead2c7}</Project>
+      <Name>SalaoDoPantcho.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

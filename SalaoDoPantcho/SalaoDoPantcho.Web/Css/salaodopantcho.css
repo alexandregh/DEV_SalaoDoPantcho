@@ -1,0 +1,84 @@
+﻿body {
+    background-color: #000;
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff;
+}
+h1, h4 {
+    text-align: center;
+}
+h5 {
+    text-indent: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+h6 {
+    text-indent: 30px;
+    font-weight: bold;
+    font-size: 18px;
+}
+p {
+    text-indent: 30px;
+    font-size: 18px;
+    text-align:justify;
+}
+.topo {
+    display: block;
+    margin-top: 10px;
+}
+.corpo {
+    display:block;
+    background-color: #000000;
+    min-height: 700px;
+}
+.principal {
+
+}
+.rodape {
+    display: block;
+    background-color: #0F0F0F;
+    height: 210px;
+    margin: 10px 0 10px 0;
+}
+.txtcopy {
+    display:block;
+    opacity:.4;
+    color: #fff;
+    text-indent: 0;
+    font-size: 16px;
+    text-align:center;
+    font-weight:bold;
+    padding:160px 0 0 0;
+}
+.txtpatrocinadores {
+    display: block;
+    opacity:.4;
+    color: #fff;
+    text-indent: 0;
+    font-size: 16px;
+    text-align:center;
+    font-weight:bold;
+    padding:180px 0 0 0;
+}
+.txtservicos {
+    display: block;
+    opacity:.4;
+    color: #fff;
+    text-indent: 0;
+    font-size: 16px;
+    text-align:left;
+    font-weight:bold;
+}
+.txtitensservicos {
+    display: block;
+    opacity: 1;
+    color: #0640A5;
+    text-indent: 0;
+    font-size: 16px;
+    text-align:left;
+    font-weight:bold;
+}
+.txtinfoalexandre {
+    opacity:1;
+    color: aquamarine;
+    text-decoration:underline;
+}

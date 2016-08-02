@@ -1,0 +1,122 @@
+﻿figcaption {
+    text-indent: 40px;
+    font-style: italic;
+}
+.descricaofigcaption {
+    text-align:center;
+    text-indent:25px;
+}
+.cartao {
+    display: block;
+    margin-top:110px;
+    min-height: 168px;
+}
+.cartaofidelidade {
+    border: 1px solid #808080;
+}
+.mapa {
+    display: block;
+    float: right;
+    margin-bottom: 20px;
+}
+.midias {
+    display: block;
+    width: 195px;
+    height: 195px;
+    margin-right:5px;
+}
+.telefone {
+    display:block;
+    margin-top: 108px;
+}
+.textoinformacoes {
+    color:#F57744;
+    font-weight:bold;
+}
+.textovoltaraotopo {
+    display:inline-block;
+    text-indent:30px;
+    position:relative;
+    top:10px;
+}
+.galerias {
+    margin:0; 
+    padding:0;
+    float:right;
+    display:block;
+}
+.login {
+    display:block;
+    float:right;
+    padding:10px 0 10px 0;
+    border-radius: 26px 2px;
+    background-color:#111010;
+}
+.linkesquecilembreiloginsenha {
+    color:#ffd800; 
+    float:right;
+}
+.listaservicos {
+    display:block;
+    padding:10px 0 10px 0;
+    border: 2px groove #F57744;
+    border-radius: 6px 6px;
+}
+.listaservicos:hover {
+    background-image: url('../Imagens/Conteudo/backgrounditensservico.jpg');
+    transition: all 3s linear;
+    -webkit-transition: all 3s linear;
+    -moz-transition: all 3s linear;
+    -o-transition: all 3s linear;
+}
+.itenslistaservicos {
+    display:block;
+    margin:20px 0 20px 0;
+}
+.ancorasitenslistaservicos {
+    color:#fff; 
+    text-decoration:none;
+}
+.ancorasitenslistaservicos:hover {
+    color:#fff; 
+    text-decoration:none;
+}
+.boxgenerogrupopublico {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    background-image: url('../Imagens/Conteudo/backgrounddetalhesitensservicos.png');
+    width: 940px;
+    min-height: 404px;
+    border: none;
+}
+.listaseguranca {
+    display:block;
+    padding:10px 0 10px 0;
+    border: 2px groove #F57744;
+    border-radius: 6px 6px;
+}
+.listaseguranca:hover {
+    background-image: url('../Imagens/Conteudo/backgrounditensservico.jpg');
+    transition: all 3s linear;
+    -webkit-transition: all 3s linear;
+    -moz-transition: all 3s linear;
+    -o-transition: all 3s linear;
+}
+.listaoperacoes {
+    display:block;
+    float:left;
+    margin:0 0 10px 0;
+    padding:10px 0 10px 0;
+    border-radius: 26px 2px;
+    background-color:#111010;
+    border: 2px groove #F57744;
+}
+.listadadoscliente {
+    display:block;
+    float:left;
+    margin:10px 0 10px 0;
+    padding:10px 0 10px 0;
+    border-radius: 26px 2px;
+    background-color:#111010;
+    border: 2px groove #F57744;
+}

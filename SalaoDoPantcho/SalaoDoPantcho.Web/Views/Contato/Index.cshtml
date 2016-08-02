@@ -1,0 +1,137 @@
+﻿@model SalaoDoPantcho.Entity.Utilitarios.Contatos.Contato
+@{
+    ViewBag.Title = "Salão do Pantcho - Contato";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<section class="row">
+    <section class="col-sm-8">
+        <h1>Salão do Pantcho</h1>
+        <h4>Barbershop</h4>
+        <hr />
+        <h5>Contato</h5><br />
+        <article>
+            <p>
+                Disponibilizamos uma área para que todos - clientes ou não clientes - possam manter contato conosco
+                e assim ficarem sabendo de todos os nossos Serviços, Produtos e Promoções, além de outras ofertas 
+                imperdíveis que o <strong>Salão do Pantcho</strong> pode proporcionar.
+            </p>
+            <br />
+        </article>
+        <section class="col-sm-4 formcontato">
+            <h6 class="txtformulariodecontato">Formulário de Contato</h6><hr />
+            @if (@TempData["MensagemSucesso"] != null)
+            {
+                <div class="alert alert-success" style="text-align:center;" role="alert">
+                    @TempData["MensagemSucesso"]
+                </div>
+            }
+            @if (@TempData["MensagemErro"] != null)
+            {
+                <div class="alert alert-danger" style="text-align:center;" role="alert">
+                    @TempData["MensagemErro"]
+                </div>
+            }
+            @using (Html.BeginForm("EnviarContato", "Contato", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+                <div class="txtErro" style="color:#F57744; font-weight:bold;">
+                    @Html.ValidationSummary()
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(mail => mail.Nome, new { @for = "nome" })
+                    @Html.TextBoxFor(mail => mail.Nome, new { @type = "text", @class = "form-control", @id = "nome", @placeholder = "Digite seu nome..." })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(mail => mail.Email, new { @for = "email" })
+                    @Html.TextBoxFor(mail => mail.Email, new { @type = "email", @class = "form-control", @id = "email", @placeholder = "Digite seu email..." })
+                </div>
+                @Html.LabelFor(mail => mail.Assunto, new { @for = "assunto" })
+                <div class="form-group">
+                    @{
+                        List<SelectListItem> listaItens = new List<SelectListItem>();
+                        listaItens.Add(new SelectListItem
+                        {
+                            Text = "Informe um Assunto...",
+                            Value = "",
+                            Selected = true
+                        });
+                        listaItens.Add(new SelectListItem
+                        {
+                            Text = "Dúvidas",
+                            Value = "Duvidas"
+                        });
+                        listaItens.Add(new SelectListItem
+                        {
+                            Text = "Elogios",
+                            Value = "Elogios"
+                        });
+                        listaItens.Add(new SelectListItem
+                        {
+                            Text = "Sugestões",
+                            Value = "Sugestoes"
+                        });
+                        listaItens.Add(new SelectListItem
+                        {
+                            Text = "Outros",
+                            Value = "Outros"
+                        });
+                    }
+                    @Html.DropDownListFor(mail => mail.Assunto, listaItens, new { @class = "form-control", @id = "assunto" })
+                </div>
+                @Html.LabelFor(mail => mail.Mensagem, new { @for = "mensagem" })
+                <div class="form-group">
+                    @Html.TextAreaFor(mail => mail.Mensagem, new { @class= "form-control textareacontato", @rows="12", @id="mensagem", @placeholder="Informe um assunto..." })
+                </div>
+                <div style="display:block; float:left;">
+                    <input type="submit" class="btn btn-primary" value="Enviar" alt="Enviar" title="Enviar" />
+                </div>
+            }
+        </section>
+    </section>
+    <aside class="col-sm-4 telefone">
+        <div class="row">
+            <div class="col-sm-2">
+                <figure>
+                    <img class="img-responsive" src="~/Imagens/Conteudo/telefone.jpg" width="65" height="65" alt="Telefone Fixo - Salão do Pantcho" title="Telefone Fixo - Salão do Pantcho" />
+                </figure>
+            </div>
+            <div class="col-sm-10">
+                <p class="textoinformacoes">2405-9531</p>
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-sm-2">
+                <figure>
+                    <img class="img-responsive" src="~/Imagens/Conteudo/whatsapp.jpg" width="65" height="65" alt="Telefone Fixo - Salão do Pantcho" title="Telefone Fixo - Salão do Pantcho" />
+                </figure>
+            </div>
+            <div class="col-sm-10">
+                <p class="textoinformacoes">97205-6767</p>
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-sm-2">
+                <figure style="padding:40px 0 0 0;">
+                    <img class="img-responsive" src="~/Imagens/Conteudo/home.jpg" width="65" height="65" alt="Telefone Fixo - Salão do Pantcho" title="Telefone Fixo - Salão do Pantcho" />
+                </figure>
+            </div>
+            <div class="col-sm-10">
+                <p class="textoinformacoes">Avenida Marrocos nº 39 </P>
+                <p class="textoinformacoes">Vila Kennedy - Bangu</p>
+                <p class="textoinformacoes">Rio de Janeiro - RJ</p>
+                <p class="textoinformacoes">CEP: 21852-590</p>
+            </div>
+            <div class="col-sm-2">
+                <figure>
+                    <img class="img-responsive" src="~/Imagens/Conteudo/email.jpg" width="65" height="65" alt="Email - Salão do Pantcho" title="Email - Salão do Pantcho" />
+                </figure>
+            </div>
+            <div class="col-sm-10">
+                <p class="textoinformacoes">salaodopantcho@gmail.com</p>
+            </div>
+        </div>
+    </aside>
+</section>

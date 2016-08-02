@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Salão do Pantcho</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Css/salaodopantcho.css" rel="stylesheet" />
+    <link href="~/Css/menu.css" rel="stylesheet" />
+    <link href="~/Css/conteudo.css" rel="stylesheet" />
+    <link href="~/SlideGaleria/SlideGaleria.css" rel="stylesheet" />
+    <link href="~/Css/formulario.css" rel="stylesheet" />
+    <link href="~/JQueryUI/ResponsiveTabsmaster/css/responsive-tabs.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/JQueryUI/SlideGaleria/SlideGaleria.js"></script>
+    <script src="~/JQueryUI/ResponsiveTabsmaster/js/jquery.responsiveTabs.min.js"></script>
+    <script src="~/JQueryUI/ResponsiveTabsmaster/js/responsiveTabs.js"></script>
+    <script src="~/JQueryUI/ShowHideForms/ShowHideForms.js"></script>
+    <script src="~/JQueryUI/MaskedInput/MaskedInput.min.js"></script>
+    <script src="~/JQueryUI/MaskedInput/Masked.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="row">
+            <div class="col-sm-12 topo">
+                <figure>
+                    <img class="img-responsive" src="~/Imagens/Layout/topo.jpg" />
+                </figure>
+            </div>
+        </header>
+        <section class="row">
+            <section class="col-sm-12 corpo">
+                <nav class="menu">
+                    <ul>
+                        <li class="item"><a href="/Home/">Home</a></li>
+                        <li class="item"><a href="/Sobre/">Sobre</a></li>
+                        <li class="item"><a href="/Servicos/">Serviços</a></li>
+                        <li class="item"><a href="/Acessorios/">Acessórios</a></li>
+                        <li class="item"><a href="/Galerias/">Galeria</a></li>
+                        <li class="item"><a href="/Localizacao/">Localização</a></li>
+                        <li class="item"><a href="/Midias/">Mídias</a></li>
+                        <li class="item"><a href="/Contato/">Contato</a></li>
+                        <li class="item"><a href="/Sistema/">Sistema</a></li>
+                    </ul>
+                </nav>
+                @RenderBody()
+            </section>
+        </section>
+        <footer class="row">
+            <section class="col-sm-12 rodape">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h6 class="txtservicos">Nossos Serviços:</h6>
+                        <p class="txtitensservicos">
+                            Corte de Cabelo a Máquina<br />
+                            Corte de Cabelo a Tesoura<br />
+                            Corte de Cabelo Infantil<br />
+                            Reflexo<br />
+                            Barba Simples<br />
+                            Barba Desenhada<br />
+                            E muito mais.
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="txtcopy">
+                            © Todos os direitos reservados<br />
+                            Salão do Pantcho
+                        </p>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="txtpatrocinadores">
+                            <em>Desenvolvido por: <a class="txtinfoalexandre" href="http://www.infoalexandre.eti.br" target="_blank" title="InfoAlexandre">Alexandre Rodrigues da Silva</a></em>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </div>
+</body>
+</html>
