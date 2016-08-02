@@ -13,12 +13,11 @@
 - Tecnologias Front-End: HTML5 + CSS3 + JQquery + BootStrap;
 - Base de Dados: SQLServer (.mdf);
 - Arquitetura do Projeto: a arquitetura do projeto atualmente está criada em DDD - Domain Driven Design contendo dez camadas descritas abaixo: <br />
-**SalaoDoPantcho.Web:** camada responsável pela apresentação contendo a arquitetura de padrão de responsabilidade chamada MVC; <br />
-**SalaoDoPantcho.App:**
-**CatalogoLivros.Util:** camada baseada no conceito Cross-Cutting Concerns* e responsável pelas Operações Utilitárias e Secundárias do Sistema; <br />
-**CatalogoLivros.Domain:** camada responsável por todas as entidades de negócio, regras e suas características; <br />
-**CatalogoLivros.Interfaces:** camada responsável por todas as Assinaturas dos Métodos (Funcionalidades) que são implementados na camada CatalogoLivros.DAL; <br />
-**CatalogoLivros.DAL:** camada responsável pela manipulação de dados; **CatalogoLivros.SGBDDAL:** camada responsável pela fonte de acesso dos dados).
+**SalaoDoPantcho.Web:** Camada de Apresentação responsável pela interface com o usuário contendo a arquitetura de padrão de responsabilidades chamada MVC; <br />
+**SalaoDoPantcho.App:** Camada de Aplicação responsável pela comunicação entre o usuário (entidade externa ao sistema) e o sistema propriamente dito. É uma camada fina de intercâmbio entre o usuário e o sistema onde um usuário pode solicitar as funcionalidades do sistema e este (sistema) por sua vez, devolver a resposta de sua solicitação.<br />
+**SalaoDoPantcho.Domain:** Camada de Domínio responsável por todas as entidades de negócio, regras e suas características; <br />
+**SalaoDoPantcho.Util:** camada baseada no conceito Cross-Cutting Concerns* e responsável pelas Operações Utilitárias e Secundárias do Sistema; <br />
+
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
 **1 - Camada de Entidades:** a Camada de Entidades contém todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações. 1<br />
 **2 - Camada do Sistema:** a Camada do Sistema subdivide-se em subcamadas a saber:<br />
