@@ -19,5 +19,13 @@
 **CatalogoLivros.Domain:** camada responsável por todas as entidades de negócio, regras e suas características; <br />
 **CatalogoLivros.Interfaces:** camada responsável por todas as Assinaturas dos Métodos (Funcionalidades) que são implementados na camada CatalogoLivros.DAL; <br />
 **CatalogoLivros.DAL:** camada responsável pela manipulação de dados; **CatalogoLivros.SGBDDAL:** camada responsável pela fonte de acesso dos dados).
+- Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
+**Camada de Entidades:**
+**Camada do Sistema:** a Camada do Sistema subdivide-se em subcamadas a saber:<br />
+<p>1.1 - Camada de Apresentação</p><br />
+<p>1.2 - Camada de Aplicação</p><br />
+<p>1.3 - Camada de Domínio</p><br />
+<p>1.4 - Camada de Infraestrutura</p><br />
+<p>A Camada de Infraestrutura subdivide-se em subcamadas a saber:<br />
 
 <p>Cross-Cutting Concerns*: São funcionalidades que não estão diretamente relacionadas ao domínio da aplicação ou às suas respectivas regras de negócio, mas que ainda sim, são importantes para o Software. Exemplos: envio de emails, criptografia de senhas, etc.</p>
