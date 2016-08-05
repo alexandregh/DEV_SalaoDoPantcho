@@ -25,11 +25,11 @@
 **SalaoDoPantcho.Util:** camada baseada no conceito **Cross-Cutting Concerns** e responsável pelas Operações Utilitárias e Secundárias do Sistema;<br />
 
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
-**1 - Camada de Entidades 1**<br />
+**1 - Camada de Entidades (1)**<br />
 **2 - Camada do Sistema**<br />
 **2.1 - Camada de Apresentação**<br />
 **2.2 - Camada de Aplicação**<br />
-**2.3 - Camada de Domínio 1**<br />
+**2.3 - Camada de Domínio (1)**<br />
 **2.4 - Camada de Infraestrutura**<br />
 **2.4.1 - Camada de Banco de Dados**<br />
 **2.4.2 - Camada de Banco de Utilitários**<br />
@@ -38,5 +38,5 @@
 **2.4.2.2.1 - Camada de Envio de Email**<br />
 **2.4.2.3 - Camada de Conversão**<br />
 **2.4.3 - Camada de Regras de Negócio**<br /><br>
-**1**: No DDD - Domain Driven Design disposto por Eric Evans todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações, Restrições e outras Regras ficam dispostas sempre na Camada de Domínio (Domain Layer) da aplicação o que é a maneira padrão de se implementar o DDD - Domain Driven Design.<br />Optei por dispor a Camada de Entidades fora da Camada do Sistema e consequentemente fora da Camada de Domínio (Domain Layer) por essas Entidades (Objetos) de Negócio estarem externos a implementação do sistema pois independente do sistema existir na forma de aplicação, Entidades (Objetos) de Negócio e suas Regras sempre existirão no Contexto de Negócio.<br />
+**(1)**: No DDD - Domain Driven Design disposto por Eric Evans todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações, Restrições e outras Regras ficam dispostas sempre na Camada de Domínio (Domain Layer) da aplicação o que é a maneira padrão de se implementar o DDD - Domain Driven Design.<br />Optei por dispor a Camada de Entidades fora da Camada do Sistema e consequentemente fora da Camada de Domínio (Domain Layer) por essas Entidades (Objetos) de Negócio estarem externos a implementação do sistema pois independente do sistema existir na forma de aplicação, Entidades (Objetos) de Negócio e suas Regras sempre existirão no Contexto de Negócio.<br />
 **Cross-Cutting Concerns**: São funcionalidades que não estão diretamente relacionadas ao domínio da aplicação ou às suas respectivas regras de negócio, mas que ainda sim, são importantes para o Software. Exemplos: envio de emails, criptografia de senhas, etc.
