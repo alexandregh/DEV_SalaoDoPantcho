@@ -21,7 +21,7 @@
 **SalaoDoPantcho.Security:** Camada de Segurança dos Dados de cada usuário responsável, por exemplo, pela criptografia das senhas de todos os usuários cadastrados no sistema afim que os mesmos possam cadastrá-las, alterá-las e realizar seu login no sistema de forma segura; Essa camada baseada no conceito **Cross-Cutting Concerns** e responsável pelas Operações Utilitárias do Sistema;<br />
 **SalaoDoPantcho.Mail:** Camada de Envio de E-mails responsável pelo envio de mensagens eletrônicas por parte de usuários cadastrados ou não no sistema com a finalidade de manter contato entre o usuário e o sistema;<br />
 **SalaoDoPantcho.Convert:** Camada de Conversão de Dados onde um de seus objetivos é realizar a conversão dos dados de entrada no sistema fornecidos por cada usuário cadastrado ou que está em processo de cadastro no sistema afim de que esses dados possam ser persistidos (criados ou alterados) no sistema de forma correta permitindo a integridade, regras e segurança dos dados no sistema.<br />
-**SalaoDoPantcho.Bussiness:**
+**SalaoDoPantcho.Bussiness:** Camada de Regras de Negócios da Aplicação responsável por manter um conjunto de regras de negócio que apoiam o funcionamento da aplicação como um todo. Essa camada tem como finalidade agregar um conjunto de regras de negócio da aplicação em um único local afim de que a aplicação se comporte no que condiz as diretrizes de cada Regra de Négócio em particular.<br />
 
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
 **1 - Camada de Entidades (1)**<br />
