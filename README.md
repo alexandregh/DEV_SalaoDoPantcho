@@ -31,11 +31,6 @@
 **2.2 - Camada de Aplicação**<br />
 **2.3 - Camada de Domínio**<br />
 **2.4 - Camada de Infraestrutura**<br />
-<p>A Camada de Infraestrutura subdivide-se em subcamadas a saber:<br />
-**2.1 - Camada de Apresentação**<br />
-**2.2 - Camada de Aplicação**<br />
-**2.3 - Camada de Domínio**<br />
-**2.4 - Camada de Infraestrutura**<br />
 **2.4.1 - Camada de Banco de Dados**<br />
 **2.4.2 - Camada de Banco de Utilitários**<br />
 **2.4.2.1 - Camada de Segurança**<br />
