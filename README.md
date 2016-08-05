@@ -25,8 +25,8 @@
 **SalaoDoPantcho.Util:** camada baseada no conceito **Cross-Cutting Concerns** e responsável pelas Operações Utilitárias e Secundárias do Sistema;<br />
 
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
-**1 - Camada de Entidades:**<br />
-**2 - Camada do Sistema:** a Camada do Sistema subdivide-se em subcamadas a saber:<br />
+**1 - Camada de Entidades**<br />
+**2 - Camada do Sistema** a Camada do Sistema subdivide-se em subcamadas a saber:<br />
 **2.1 - Camada de Apresentação**<br />
 **2.2 - Camada de Aplicação**<br />
 **2.3 - Camada de Domínio**<br />
