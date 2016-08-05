@@ -18,7 +18,7 @@
 **SalaoDoPantcho.App:** Camada de Aplicação responsável pela comunicação entre o usuário (entidade externa ao sistema) e o sistema propriamente dito. É uma camada fina de intercâmbio entre o usuário e o sistema onde um usuário pode solicitar as funcionalidades do sistema e este (sistema) por sua vez, devolver a resposta de sua solicitação.<br />
 **SalaoDoPantcho.Domain:** Camada de Domínio originalmente responsável por todas as Entidades (Objetos) de Negócio da Aplicação, bem como suas Regras de Negócio como Associações e Restrições. Essa camada contém todos os elementos necessários do Domínio da Aplicação como as Interfaces (Interface), Classes (Class), Enumerações (Enum), Relacionamentos (Relationship), Serviços de Domínio (DomainServices) e outros elementos **1**;<br />
 **SalaoDoPantcho.SGBD:** Camada de Repositório de Dados baseada em um Sistema de Gerenciamento de Banco de Dados onde sua finalidade é acessar, manipular e persistir todos os dados da aplicação;<br />
-**SalaoDoPantcho.Security:**
+**SalaoDoPantcho.Security:** Camada de Segurança dos Dados de cada usuário responsável, por exemplo, pela criptografia das senhas de todos os usuários do sistema afim que os mesmos possam cadastrá-las, alterá-las e realizar seu login no sistema de forma segura
 **SalaoDoPantcho.Mail:**
 **SalaoDoPantcho.Convert:**
 **SalaoDoPantcho.Bussiness:**
