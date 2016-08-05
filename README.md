@@ -18,6 +18,10 @@
 **SalaoDoPantcho.App:** Camada de Aplicação responsável pela comunicação entre o usuário (entidade externa ao sistema) e o sistema propriamente dito. É uma camada fina de intercâmbio entre o usuário e o sistema onde um usuário pode solicitar as funcionalidades do sistema e este (sistema) por sua vez, devolver a resposta de sua solicitação.<br />
 **SalaoDoPantcho.Domain:** Camada de Domínio originalmente responsável por todas as Entidades (Objetos) de Negócio da Aplicação, bem como suas Regras de Negócio como Associações e Restrições. Essa camada contém todos os elementos necessários do Domínio da Aplicação como as Interfaces (Interface), Classes (Class), Enumerações (Enum), Relacionamentos (Relationship), Serviços de Domínio (DomainServices) e outros elementos **1**;<br />
 **SalaoDoPantcho.SGBD:** Camada de Repositório de Dados baseada em um Sistema de Gerenciamento de Banco de Dados onde sua finalidade é acessar, manipular e persistir todos os dados da aplicação;<br />
+**SalaoDoPantcho.Security:**
+**SalaoDoPantcho.Mail:**
+**SalaoDoPantcho.Convert:**
+**SalaoDoPantcho.Bussiness:**
 **SalaoDoPantcho.Util:** camada baseada no conceito **Cross-Cutting Concerns** e responsável pelas Operações Utilitárias e Secundárias do Sistema;<br />
 
 - Organização do Projeto: na IDE do Visual Studio a organização do projeto está dividida da seguinte forma:<br />
