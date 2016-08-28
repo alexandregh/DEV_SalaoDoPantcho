@@ -138,7 +138,7 @@ namespace SalaoDoPantcho.Web.App_Start
 
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
+                
                 RegisterServices(kernel);
                 return kernel;
             }

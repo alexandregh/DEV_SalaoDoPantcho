@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Camada de Entidades", "1 - Camada de Entidades", "{DB1EA360-8B64-449F-8693-7C82C46BDCC3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Sistema", "2 - Sistema", "{C7ACBABE-85FA-4DD2-A50E-896548126061}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Camada do Sistema", "2 - Camada do Sistema", "{C7ACBABE-85FA-4DD2-A50E-896548126061}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - Camada de Apresentação", "2.1 - Camada de Apresentação", "{BC1A913F-0F10-4669-B82B-8CC7D5093C83}"
 EndProject
