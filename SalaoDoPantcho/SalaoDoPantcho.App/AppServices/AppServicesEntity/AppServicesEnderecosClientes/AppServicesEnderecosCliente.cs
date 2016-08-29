@@ -30,34 +30,34 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesEnderecos
 
         public EnderecosCliente AppServicePesquisarEnderecoPorTipoEndereco(TipoEnderecos tipoEndereco)
         {
-            return this.appServicesEnderecosCliente.PesquisarEnderecoPorTipoEnderecoService(tipoEndereco);
+            return appServicesEnderecosCliente.PesquisarEnderecoPorTipoEnderecoService(tipoEndereco);
         }
 
         public EnderecosCliente AppServicePesquisarEnderecoPorBairro(string bairro)
         {
-            return this.appServicesEnderecosCliente.PesquisarEnderecoPorBairroService(bairro);
+            return appServicesEnderecosCliente.PesquisarEnderecoPorBairroService(bairro);
         }
 
         public EnderecosCliente AppServicePesquisarEnderecoPorCep(string cep)
         {
-            return this.appServicesEnderecosCliente.PesquisarEnderecoPorCepService(cep);
+            return appServicesEnderecosCliente.PesquisarEnderecoPorCepService(cep);
         }
 
         //__________
 
         public ICollection<EnderecosCliente> AppServicesPesquisarEnderecosPorBairro(string bairro)
         {
-            return this.appServicesEnderecosCliente.PesquisarEnderecosPorBairroService(bairro);
+            return appServicesEnderecosCliente.PesquisarEnderecosPorBairroService(bairro);
         }
 
         public ICollection<EnderecosCliente> AppServicesPesquisarEnderecosPorCep(string cep)
         {
-            return this.appServicesEnderecosCliente.PesquisarEnderecosPorCepService(cep);
+            return appServicesEnderecosCliente.PesquisarEnderecosPorCepService(cep);
         }
 
         public ICollection<EnderecosCliente> AppServicesPesquisarEnderecosPorTipoEnderecos(TipoEnderecos tipoEndereco)
         {
-            return this.appServicesEnderecosCliente.PesquisarEnderecosPorTipoEnderecosService(tipoEndereco);
+            return appServicesEnderecosCliente.PesquisarEnderecosPorTipoEnderecosService(tipoEndereco);
         }
 
         #endregion

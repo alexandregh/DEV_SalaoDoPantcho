@@ -26,7 +26,7 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         #region Implementação Métodos Serviços
 
-        // ainda vai er implementado...
+        // ainda vai ser implementado...
 
         #endregion
     }

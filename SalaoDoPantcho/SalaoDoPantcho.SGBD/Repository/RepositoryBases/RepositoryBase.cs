@@ -5,13 +5,14 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Transactions;
 using SalaoDoPantcho.Domain.IContracts.IContractsInfraEstructure.IContractsSGBD.IContractsSGBDBases;
 using SalaoDoPantcho.SGBD.Context;
 
 namespace SalaoDoPantcho.SGBD.Repository.RepositoryBases
 {
-    public abstract class RepositoryBase<TEntity, TKey> : IContractsSGBDBase<TEntity, TKey> where TEntity : class
-                                                                                            where TKey : struct
+    public abstract class RepositoryBase<TEntity, TKey> : IDisposable, IContractsSGBDBase<TEntity, TKey> where TEntity : class
+                                                                                                         where TKey : struct
     {
         #region Atributo
 
@@ -33,159 +34,178 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryBases
 
         public void InserirPersistence(TEntity entidade)
         {
-            try
+            if (entidade != null)
             {
-                transacaoBD = dataContext.Database.BeginTransaction();               
-                dataContext.Entry(entidade).State = EntityState.Added;                
-                dataContext.SaveChanges();
-                transacaoBD.Commit();
-                transacaoBD.Dispose();
-                dataContext.Dispose();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                throw new DbUpdateConcurrencyException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (DbUpdateException ex)
-            {
-                if (ex.InnerException != null)
+                try
                 {
-                    throw new Exception("Ocorreu o erro: " + String.Concat(ex.InnerException.StackTrace, ex.InnerException.Message + ". Aguarde alguns instantes e tente novamente."));
-                }
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
+                    using (TransactionScope transacao = new TransactionScope())
                     {
-                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        dataContext.Entry(entidade).State = EntityState.Added;
+                        dataContext.SaveChanges();
+                        transacao.Complete();
                     }
                 }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    throw new DbUpdateConcurrencyException(nameof(ex.Message));
+                }
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        throw new Exception(nameof(ex.Message));
+                    }
+                    throw new Exception(nameof(ex.Message));
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var validationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
+                catch (NotSupportedException ex)
+                {
+                    throw new NotSupportedException(nameof(ex.Message));
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    throw new ObjectDisposedException(nameof(ex.Message));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    throw new InvalidOperationException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
+                dataContext.Dispose();
             }
-            catch (NotSupportedException ex)
+            else
             {
-                throw new NotSupportedException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (ObjectDisposedException ex)
-            {
-                throw new ObjectDisposedException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (InvalidOperationException ex)
-            {
-                throw new InvalidOperationException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                this.Dispose(true);
             }
         }
 
         public void AtualizarPersistence(TEntity entidade)
         {
-            try
-            {
-                transacaoBD = dataContext.Database.BeginTransaction();
-                dataContext.Entry(entidade).State = EntityState.Modified;
-                dataContext.SaveChanges();
-                transacaoBD.Commit();
-                transacaoBD.Dispose();
-                dataContext.Dispose();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                throw new DbUpdateConcurrencyException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (DbUpdateException ex)
-            {
-                if (ex.InnerException != null)
+            if(entidade != null)
+            { 
+                try
                 {
-                    throw new Exception("Ocorreu o erro: " + String.Concat(ex.InnerException.StackTrace, ex.InnerException.Message + ". Aguarde alguns instantes e tente novamente."));
-                }
-                throw new DbUpdateException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
+                    using (TransactionScope transacao = new TransactionScope())
                     {
-                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        dataContext.Entry(entidade).State = EntityState.Modified;
+                        dataContext.SaveChanges();
+                        transacao.Complete();
                     }
                 }
-            }
-            catch (NotSupportedException ex)
-            {
-                throw new NotSupportedException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (ObjectDisposedException ex)
-            {
-                throw new ObjectDisposedException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (InvalidOperationException ex)
-            {
-                throw new InvalidOperationException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
-            }
-            finally
-            {
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    throw new DbUpdateConcurrencyException(nameof(ex.Message));
+                }
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        throw new Exception("Ocorreu o erro: " + String.Concat(ex.InnerException.StackTrace, ex.InnerException.Message + ". Aguarde alguns instantes e tente novamente."));
+                    }
+                    throw new DbUpdateException(nameof(ex.Message));
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var validationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
+                catch (NotSupportedException ex)
+                {
+                    throw new NotSupportedException(nameof(ex.Message));
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    throw new ObjectDisposedException(nameof(ex.Message));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    throw new InvalidOperationException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
                 dataContext.Dispose();
-                transacaoBD.Dispose();
+            }
+            else
+            {
+                this.Dispose(true);
             }
         }
 
         public void ExcluirPersistence(TEntity entidade)
         {
-            try
+            if (entidade != null)
             {
-                transacaoBD = dataContext.Database.BeginTransaction();
-                dataContext.Entry(entidade).State = EntityState.Deleted;
-                dataContext.SaveChanges();
-                transacaoBD.Commit();
-                transacaoBD.Dispose();
-                dataContext.Dispose();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                throw new DbUpdateConcurrencyException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (DbUpdateException ex)
-            {
-                if (ex.InnerException != null)
+                try
                 {
-                    throw new Exception("Ocorreu o erro: " + String.Concat(ex.InnerException.StackTrace, ex.InnerException.Message + ". Aguarde alguns instantes e tente novamente."));
-                }
-                throw new DbUpdateException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
+                    using (TransactionScope transacao = new TransactionScope())
                     {
-                        Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        dataContext.Entry(entidade).State = EntityState.Deleted;
+                        dataContext.SaveChanges();
+                        transacao.Complete();
                     }
                 }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    throw new DbUpdateConcurrencyException(nameof(ex.Message));
+                }
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        throw new Exception("Ocorreu o erro: " + String.Concat(ex.InnerException.StackTrace, ex.InnerException.Message + ". Aguarde alguns instantes e tente novamente."));
+                    }
+                    throw new DbUpdateException(nameof(ex.Message));
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var validationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            Trace.TraceInformation("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
+                catch (NotSupportedException ex)
+                {
+                    throw new NotSupportedException(nameof(ex.Message));
+                }
+                catch (ObjectDisposedException ex)
+                {
+                    throw new ObjectDisposedException(nameof(ex.Message));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    throw new InvalidOperationException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
+                dataContext.Dispose();
             }
-            catch (NotSupportedException ex)
+            else
             {
-                throw new NotSupportedException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (ObjectDisposedException ex)
-            {
-                throw new ObjectDisposedException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (InvalidOperationException ex)
-            {
-                throw new InvalidOperationException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                this.Dispose(true);
             }
         }
 
@@ -193,34 +213,62 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryBases
         {
             try
             {
-                List<TEntity> entidade = dataContext.Set<TEntity>().AsNoTracking().ToList();
+                List<TEntity> entidade = dataContext.Set<TEntity>().AsParallel().ToList();
                 return entidade;
             }
             catch (ArgumentNullException ex)
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
+                throw new ArgumentNullException(nameof(ex.Message));
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                throw new Exception(nameof(ex.Message));
             }
         }
 
         public TEntity PesquisarPorIdPersistence(Int32 id)
         {
-            try
+            if (id != 0)
             {
-                TEntity entidade = dataContext.Set<TEntity>().Find(id);
-                return entidade;
+                try
+                {
+                    TEntity entidade = dataContext.Set<TEntity>().Find(id);
+                    return entidade;
+                }
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
+                this.Dispose(true);
+                return null;
             }
-            catch (Exception ex)
+        }
+
+        #endregion
+
+        #region Implementação da Interface IDisposable
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                // dispose managed resources
+
             }
+            // free native resources
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         #endregion

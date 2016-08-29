@@ -14,150 +14,213 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryEnderecosCli
 
         public EnderecosCliente PesquisarEnderecoPorTipoEnderecoPersistence(TipoEnderecos tipoEndereco)
         {
-            try
+            if (tipoEndereco != 0)
             {
-                EnderecosCliente enderecoClientePorTipoEnderecos = dataContext.EnderecosCliente.AsNoTracking()
-                                                            .Where(endereco => endereco.TipoEndereco == tipoEndereco)
-                                                            .FirstOrDefault();
-                if (enderecoClientePorTipoEnderecos != null)
+                try
                 {
-                    return enderecoClientePorTipoEnderecos;
+                    EnderecosCliente enderecoClientePorTipoEnderecos = dataContext.EnderecosCliente.AsParallel()
+                                                                .Where(endereco => endereco.TipoEndereco == tipoEndereco)
+                                                                .FirstOrDefault();
+                    if (enderecoClientePorTipoEnderecos != null)
+                    {
+                        dataContext.Dispose();
+                        return enderecoClientePorTipoEnderecos;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return enderecoClientePorTipoEnderecos;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public EnderecosCliente PesquisarEnderecoPorBairroPersistence(string bairro)
         {
-            try
+            if (!string.IsNullOrEmpty(bairro))
             {
-                EnderecosCliente enderecoClientePorBairro = dataContext.EnderecosCliente.AsNoTracking()
-                                                            .Where(endereco => endereco.Bairro == bairro)
-                                                            .FirstOrDefault();
-                if (enderecoClientePorBairro != null)
+                try
                 {
-                    return enderecoClientePorBairro;
+                    EnderecosCliente enderecoClientePorBairro = dataContext.EnderecosCliente.AsParallel()
+                                                                .Where(endereco => endereco.Bairro == bairro)
+                                                                .FirstOrDefault();
+                    if (enderecoClientePorBairro != null)
+                    {
+                        dataContext.Dispose();
+                        return enderecoClientePorBairro;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return enderecoClientePorBairro;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public EnderecosCliente PesquisarEnderecoPorCepPersistence(string cep)
         {
-            try
+            if (!string.IsNullOrEmpty(cep))
             {
-                EnderecosCliente enderecoClientePorCep = dataContext.EnderecosCliente
-                                                         .Where(endereco => endereco.CEP == cep)
-                                                         .FirstOrDefault();
-                return enderecoClientePorCep;
+                try
+                {
+                    EnderecosCliente enderecoClientePorCep = dataContext.EnderecosCliente.AsParallel()
+                                                             .Where(endereco => endereco.CEP == cep)
+                                                             .FirstOrDefault();
+                    if (enderecoClientePorCep != null)
+                    {
+                        dataContext.Dispose();
+                        return enderecoClientePorCep;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
+                }
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
-        //_________
+        //_________________
 
         public ICollection<EnderecosCliente> PesquisarEnderecosPorBairroPersistence(string bairro)
         {
-            try
+            if (!string.IsNullOrEmpty(bairro))
             {
-                List<EnderecosCliente> enderecoClientePorBairro = dataContext.EnderecosCliente.AsNoTracking().
-                                                                  Where(endereco => endereco.Bairro == bairro).ToList();
-                if (enderecoClientePorBairro != null)
+                try
                 {
-                    return enderecoClientePorBairro;
+                    List<EnderecosCliente> enderecoClientePorBairro = dataContext.EnderecosCliente.AsParallel().
+                                                                      Where(endereco => endereco.Bairro == bairro)
+                                                                      .ToList();
+                    if (enderecoClientePorBairro != null)
+                    {
+                        dataContext.Dispose();
+                        return enderecoClientePorBairro;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return enderecoClientePorBairro;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<EnderecosCliente> PesquisarEnderecosPorCepPersistence(string cep)
         {
-            try
+            if (!string.IsNullOrEmpty(cep))
             {
-                List<EnderecosCliente> enderecoClientePorCep = dataContext.EnderecosCliente.AsNoTracking().
-                                                               Where(endereco => endereco.CEP == cep).ToList();
-                if (enderecoClientePorCep != null)
+                try
                 {
-                    return enderecoClientePorCep;
+                    List<EnderecosCliente> enderecoClientePorCep = dataContext.EnderecosCliente.AsParallel().
+                                                                   Where(endereco => endereco.CEP == cep)
+                                                                   .ToList();
+                    if (enderecoClientePorCep != null)
+                    {
+                        dataContext.Dispose();
+                        return enderecoClientePorCep;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return enderecoClientePorCep;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<EnderecosCliente> PesquisarEnderecosPorTipoEnderecosPersistence(TipoEnderecos tipoEndereco)
         {
-            try
+            if (tipoEndereco != 0)
             {
-                List<EnderecosCliente> enderecoClientePorTipoEnderecos = dataContext.EnderecosCliente.AsNoTracking().
-                                                                         Where(endereco => endereco.TipoEndereco == tipoEndereco)
-                                                                         .ToList();
-                if (enderecoClientePorTipoEnderecos != null)
+                try
                 {
-                    return enderecoClientePorTipoEnderecos;
+                    List<EnderecosCliente> enderecoClientePorTipoEnderecos = dataContext.EnderecosCliente.AsParallel().
+                                                                             Where(endereco => endereco.TipoEndereco == tipoEndereco)
+                                                                             .ToList();
+                    if (enderecoClientePorTipoEnderecos != null)
+                    {
+                        dataContext.Dispose();
+                        return enderecoClientePorTipoEnderecos;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return enderecoClientePorTipoEnderecos;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

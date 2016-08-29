@@ -29,22 +29,22 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesPromocoes
 
         public Promocoes AppServicesPesquisarPromocaoPorNome(string nome)
         {
-            return this.appServicesPromocao.PesquisarPromocaoPorNomeService(nome);
+            return appServicesPromocao.PesquisarPromocaoPorNomeService(nome);
         }
 
         public ICollection<Promocoes> AppServicesPesquisarPromocoesPorDataFim(DateTime dataFim)
         {
-            return this.appServicesPromocao.PesquisarPromocoesPorDataFimService(dataFim);
+            return appServicesPromocao.PesquisarPromocoesPorDataFimService(dataFim);
         }
 
         public ICollection<Promocoes> AppServicesPesquisarPromocoesPorDataInicio(DateTime dataInicio)
         {
-            return this.appServicesPromocao.PesquisarPromocoesPorDataInicioService(dataInicio);
+            return appServicesPromocao.PesquisarPromocoesPorDataInicioService(dataInicio);
         }
 
         public ICollection<Promocoes> AppServicesPesquisarPromocoesPorDataInicioFim(DateTime dataInicio, DateTime dataFim)
         {
-            return this.appServicesPromocao.PesquisarPromocoesPorDataInicioFimService(dataInicio, dataFim);
+            return appServicesPromocao.PesquisarPromocoesPorDataInicioFimService(dataInicio, dataFim);
         }
 
         #endregion

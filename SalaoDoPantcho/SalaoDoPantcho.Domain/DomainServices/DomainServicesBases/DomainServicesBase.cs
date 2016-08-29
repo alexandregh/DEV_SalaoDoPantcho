@@ -27,62 +27,27 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesBases
 
         public void InserirService(TEntity entidade)
         {
-            try
-            {
-                servicoBase.InserirPersistence(entidade);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoBase.InserirPersistence(entidade);
         }
 
         public void AtualizarService(TEntity entidade)
         {
-            try
-            {
-                servicoBase.AtualizarPersistence(entidade);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoBase.AtualizarPersistence(entidade);
         }
 
         public void ExcluirService(TEntity entidade)
         {
-            try
-            {
-                servicoBase.ExcluirPersistence(entidade);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoBase.ExcluirPersistence(entidade);
         }
 
         public ICollection<TEntity> PesquisarTodosService()
         {
-            try
-            {
-                return servicoBase.PesquisarTodosPersistence();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoBase.PesquisarTodosPersistence();
         }
 
         public TEntity PesquisarPorIdService(Int32 id)
         {
-            try
-            {
-                return servicoBase.PesquisarPorIdPersistence(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoBase.PesquisarPorIdPersistence(id);
         }
 
         #endregion

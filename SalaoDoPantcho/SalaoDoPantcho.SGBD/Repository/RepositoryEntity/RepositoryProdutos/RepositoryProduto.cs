@@ -14,105 +14,141 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryProdutos
 
         public ICollection<Produtos> PesquisarProdutoPorDataFabricantePersistence(DateTime dataFabricante)
         {
-            try
+            if (dataFabricante != null)
             {
-                List<Produtos> produtoPorDataFabricante = this.dataContext.Produtos.AsNoTracking().Where(produto => produto.DataFabricacao == dataFabricante).ToList();
-                if (produtoPorDataFabricante != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorDataFabricante;
+                    List<Produtos> produtoPorDataFabricante = dataContext.Produtos.AsParallel()
+                                                              .Where(produto => produto.DataFabricacao == dataFabricante)
+                                                              .ToList();
+                    if (produtoPorDataFabricante != null)
+                    {
+                        dataContext.Dispose();
+                        return produtoPorDataFabricante;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorDataFabricante;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<Produtos> PesquisarProdutoPorDataValidadePersistence(DateTime dataValidade)
         {
-            try
+            if (dataValidade != null)
             {
-                List<Produtos> produtoPorDataValidade = this.dataContext.Produtos.AsNoTracking().Where(produto => produto.DataValidade == dataValidade).ToList();
-                if (produtoPorDataValidade != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorDataValidade;
+                    List<Produtos> produtoPorDataValidade = dataContext.Produtos.AsParallel()
+                                                            .Where(produto => produto.DataValidade == dataValidade)
+                                                            .ToList();
+                    if (produtoPorDataValidade != null)
+                    {
+                        dataContext.Dispose();
+                        return produtoPorDataValidade;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorDataValidade;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<Produtos> PesquisarProdutoPorFabricantePersistence(string fabricante)
         {
-            try
+            if (!string.IsNullOrEmpty(fabricante))
             {
-                List<Produtos> produtoPorFabricante = this.dataContext.Produtos.AsNoTracking().Where(produto => produto.Fabricante == fabricante).ToList();
-                if (produtoPorFabricante != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorFabricante;
+                    List<Produtos> produtoPorFabricante = dataContext.Produtos.AsParallel()
+                                                          .Where(produto => produto.Fabricante == fabricante)
+                                                          .ToList();
+                    if (produtoPorFabricante != null)
+                    {
+                        dataContext.Dispose();
+                        return produtoPorFabricante;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorFabricante;
+                    throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public Produtos PesquisarProdutoPorNomePercistence(string nome)
         {
-            try
+            if (!string.IsNullOrEmpty(nome))
             {
-                Produtos produtoPorNome = this.dataContext.Produtos.AsNoTracking().Where(produto => produto.Nome == nome).FirstOrDefault();
-                if (produtoPorNome != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorNome;
+                    Produtos produtoPorNome = dataContext.Produtos.AsParallel()
+                                              .Where(produto => produto.Nome == nome)
+                                              .FirstOrDefault();
+                    if (produtoPorNome != null)
+                    {
+                        dataContext.Dispose();
+                        return produtoPorNome;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return produtoPorNome;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

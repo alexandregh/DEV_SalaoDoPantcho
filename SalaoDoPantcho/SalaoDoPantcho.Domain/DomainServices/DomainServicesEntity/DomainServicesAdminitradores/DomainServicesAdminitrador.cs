@@ -28,50 +28,22 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public void VincularClienteAProdutosService(string login, string email)
         {
-            try
-            {
-                servicoAdministrador.VincularClienteAProdutosPersistence(login, email);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoAdministrador.VincularClienteAProdutosPersistence(login, email);
         }
 
         public void VincularClienteAPromocaoDatasComemorativasService(string login, string email)
         {
-            try
-            {
-                servicoAdministrador.VincularClienteAPromocaoDatasComemorativasPersistence(login, email);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoAdministrador.VincularClienteAPromocaoDatasComemorativasPersistence(login, email);
         }
 
         public void VincularClienteAPromocaoService(string login, string email)
-        {
-            try
-            {
-                servicoAdministrador.VincularClienteAPromocaoPersistence(login, email);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {   
+            servicoAdministrador.VincularClienteAPromocaoPersistence(login, email);
         }
 
         public void VincularClienteAServicoService(string login, string email)
-        {
-            try
-            {
-                servicoAdministrador.VincularClienteAServicoPersistence(login, email);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        { 
+            servicoAdministrador.VincularClienteAServicoPersistence(login, email);
         }
 
         #endregion

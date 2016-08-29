@@ -14,79 +14,106 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryServicos
 
         public ICollection<Servicos> PesquisarServicosPorGeneroPersistence(GeneroServico generoServico)
         {
-            try
+            if (generoServico != 0)
             {
-                List<Servicos> servicoPorGenero = this.dataContext.Servicos.AsNoTracking().Where(servico => servico.GeneroServico == generoServico).ToList();
-                if (servicoPorGenero != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return servicoPorGenero;
+                    List<Servicos> servicoPorGenero = dataContext.Servicos.AsParallel()
+                                                      .Where(servico => servico.GeneroServico == generoServico)
+                                                      .ToList();
+                    if (servicoPorGenero != null)
+                    {
+                        dataContext.Dispose();
+                        return servicoPorGenero;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return servicoPorGenero;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<Servicos> PesquisarServicosPorPrecoPersistence(decimal preco)
         {
-            try
+            if (preco != decimal.Zero)
             {
-                List<Servicos> servicoPorPreco = this.dataContext.Servicos.AsNoTracking().Where(servico => servico.Preco == preco).ToList();
-                if (servicoPorPreco != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return servicoPorPreco;
+                    List<Servicos> servicoPorPreco = dataContext.Servicos.AsParallel()
+                                                     .Where(servico => servico.Preco == preco)
+                                                     .ToList();
+                    if (servicoPorPreco != null)
+                    {
+                        dataContext.Dispose();
+                        return servicoPorPreco;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return servicoPorPreco;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public Servicos PesquisarServicosPorNomePersistence(string nome)
         {
-            try
+            if (!string.IsNullOrEmpty(nome))
             {
-                Servicos servicoPorNome = this.dataContext.Servicos.AsNoTracking().Where(servico => servico.Nome == nome).FirstOrDefault();
-                if (servicoPorNome != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return servicoPorNome;
+                    Servicos servicoPorNome = dataContext.Servicos.AsParallel()
+                                              .Where(servico => servico.Nome == nome)
+                                              .FirstOrDefault();
+                    if (servicoPorNome != null)
+                    {
+                        dataContext.Dispose();
+                        return servicoPorNome;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return servicoPorNome;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

@@ -30,75 +30,33 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public TelefonesCliente PesquisarTelefonePorDDDService(byte ddd)
         {
-            try
-            {
-                return servicoTelefonesCliente.PesquisarTelefonePorDDDPersistence(ddd);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoTelefonesCliente.PesquisarTelefonePorDDDPersistence(ddd);
         }
 
         public TelefonesCliente PesquisarTelefonePorNumeroService(int numero)
-        {
-            try
-            {
-                return servicoTelefonesCliente.PesquisarTelefonePorNumeroPersistence(numero);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoTelefonesCliente.PesquisarTelefonePorNumeroPersistence(numero);
         }
 
         public TelefonesCliente PesquisarTelefonePorTipoTelefoneService(TipoTelefones tipoTelefone)
-        {
-            try
-            {
-                return servicoTelefonesCliente.PesquisarTelefonePorTipoTelefonePersistence(tipoTelefone);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoTelefonesCliente.PesquisarTelefonePorTipoTelefonePersistence(tipoTelefone);            
         }
 
 
         public ICollection<TelefonesCliente> PesquisarTelefonesPorDDDService(byte ddd)
-        {
-            try
-            {
-                return servicoTelefonesCliente.PesquisarTelefonesPorNumeroPersistence(ddd);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoTelefonesCliente.PesquisarTelefonesPorNumeroPersistence(ddd);
         }
 
         public ICollection<TelefonesCliente> PesquisarTelefonesPorNumeroService(int numero)
-        {
-            try
-            {
-                return servicoTelefonesCliente.PesquisarTelefonesPorNumeroPersistence(numero);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoTelefonesCliente.PesquisarTelefonesPorNumeroPersistence(numero);
         }
 
         public ICollection<TelefonesCliente> PesquisarTelefonesPorTipoTelefoneService(TipoTelefones tipoTelefone)
-        {
-            try
-            {
-                return servicoTelefonesCliente.PesquisarTelefonesPorTipoTelefonePersistence(tipoTelefone);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoTelefonesCliente.PesquisarTelefonesPorTipoTelefonePersistence(tipoTelefone);
         }
 
         #endregion

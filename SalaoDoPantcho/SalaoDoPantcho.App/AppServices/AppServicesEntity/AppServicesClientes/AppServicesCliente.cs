@@ -29,62 +29,62 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesClientes
 
         public void AppServicesApagarClientePorEmailLoginSenha(string email, string login, string senha)
         {
-            this.appServicesCliente.ApagarClientePorEmailLoginSenhaService(email, login, senha);
+            appServicesCliente.ApagarClientePorEmailLoginSenhaService(email, login, senha);
         }
 
         public void AppServicesLoginSistema(string login, string senha)
         {
-            this.appServicesCliente.LoginSistemaService(login, senha);
+            appServicesCliente.LoginSistemaService(login, senha);
         }
 
         public void AppServicesLogoutSistema()
         {
-            this.appServicesCliente.LogoutSistemaService();
+            appServicesCliente.LogoutSistemaService();
         }
 
         public void AppTrocarSenha(string senhaAtual, string novaSenha)
         {
-            this.appServicesCliente.TrocarSenhaService(senhaAtual, novaSenha);
+            appServicesCliente.TrocarSenhaService(senhaAtual, novaSenha);
         }
 
         public bool AppVerificarSenhaTemporaria(string login, string senha)
         {
-            return this.appServicesCliente.VerificarSenhaTemporariaService(login, senha);
+            return appServicesCliente.VerificarSenhaTemporariaService(login, senha);
         }
 
         public void AppAtivarCliente(string login, string senha, StatusPessoa statusPessoa)
         {
-            this.appServicesCliente.AtivarClienteService(login, senha, statusPessoa);
+            appServicesCliente.AtivarClienteService(login, senha, statusPessoa);
         }
 
         public void AppDesativarCliente(string login, string senha, StatusPessoa statusPessoa)
         {
-            this.appServicesCliente.DesativarClienteService(login, senha, statusPessoa);
+            appServicesCliente.DesativarClienteService(login, senha, statusPessoa);
         }
 
         public void AppServicesResetarSenhaCliente(int id, string login)
         {
-            this.appServicesCliente.ResetarSenhaClienteService(id, login);
+            appServicesCliente.ResetarSenhaClienteService(id, login);
         }
 
         public Clientes AppServicesPesquisarClientePorNomeApelidoEmail(string nomApelido, string email)
         {
-            return this.appServicesCliente.PesquisarClientePorNomeApelidoEmailService(nomApelido, email);
+            return appServicesCliente.PesquisarClientePorNomeApelidoEmailService(nomApelido, email);
         }
 
         public Clientes AppServicesPesquisarClientePorLoginEmail(string login, string email)
         {
-            return this.appServicesCliente.PesquisarClientePorLoginEmailService(login, email);
+            return appServicesCliente.PesquisarClientePorLoginEmailService(login, email);
         }
 
         public Clientes AppServicesPesquisarClientePorLoginSenha(string login, string senha)
         {
-            return this.appServicesCliente.PesquisarClientePorLoginSenhaService(login, senha);
+            return appServicesCliente.PesquisarClientePorLoginSenhaService(login, senha);
         }
 
         public Clientes AppServicesPesquisarClientePorLogin(string login)
         {
-            return this.appServicesCliente.PesquisarClientePorLoginService(login);
+            return appServicesCliente.PesquisarClientePorLoginService(login);
         }
 
         #endregion

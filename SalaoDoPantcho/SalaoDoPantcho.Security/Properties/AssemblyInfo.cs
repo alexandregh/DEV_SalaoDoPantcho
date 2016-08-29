@@ -14,12 +14,12 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
+// Setting ComVisible to false makes the types in  assembly not visible 
+// to COM components.  If you need to access a type in  assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
+// The following GUID is for the ID of the typelib if  project is exposed to COM
 [assembly: Guid("621aa110-47c3-4f43-9ede-7a90a02b3597")]
 
 // Version information for an assembly consists of the following four values:

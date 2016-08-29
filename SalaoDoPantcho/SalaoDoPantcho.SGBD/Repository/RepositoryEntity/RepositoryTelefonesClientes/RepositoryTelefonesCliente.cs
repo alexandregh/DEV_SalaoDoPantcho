@@ -14,158 +14,213 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryTelefonesCli
 
         public TelefonesCliente PesquisarTelefonePorDDDPersistence(byte ddd)
         {
-            try
+            if (ddd != byte.MinValue)
             {
-                TelefonesCliente telefoneClientePorDDD = dataContext.TelefonesCliente.AsNoTracking()
-                                                         .Where(telefone => telefone.DDD == ddd)
-                                                         .FirstOrDefault();
-                if (telefoneClientePorDDD != null)
+                try
                 {
-                    return telefoneClientePorDDD;
+                    TelefonesCliente telefoneClientePorDDD = dataContext.TelefonesCliente.AsParallel()
+                                                             .Where(telefone => telefone.DDD == ddd)
+                                                             .FirstOrDefault();
+                    if (telefoneClientePorDDD != null)
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorDDD;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return null;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public TelefonesCliente PesquisarTelefonePorNumeroPersistence(int numero)
         {
-            try
+            if (numero != 0)
             {
-                TelefonesCliente telefoneClientePorNumero = dataContext.TelefonesCliente.AsNoTracking()
-                                                            .Where(telefone => telefone.Numero == numero)
-                                                            .FirstOrDefault();
-                if (telefoneClientePorNumero != null)
+                try
                 {
-                    return telefoneClientePorNumero;
+                    TelefonesCliente telefoneClientePorNumero = dataContext.TelefonesCliente.AsParallel()
+                                                                .Where(telefone => telefone.Numero == numero)
+                                                                .FirstOrDefault();
+                    if (telefoneClientePorNumero != null)
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorNumero;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorNumero;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return telefoneClientePorNumero;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public TelefonesCliente PesquisarTelefonePorTipoTelefonePersistence(TipoTelefones tipoTelefone)
         {
-            try
+            if (tipoTelefone != 0)
             {
-                TelefonesCliente telefoneClientePorTipoTelefone = dataContext.TelefonesCliente.AsNoTracking()
-                                                                 .Where(telefone => telefone.TipoTelefone == tipoTelefone)
-                                                                 .FirstOrDefault();
-                if (telefoneClientePorTipoTelefone != null)
+                try
                 {
-                    return telefoneClientePorTipoTelefone;
+                    TelefonesCliente telefoneClientePorTipoTelefone = dataContext.TelefonesCliente.AsParallel()
+                                                                     .Where(telefone => telefone.TipoTelefone == tipoTelefone)
+                                                                     .FirstOrDefault();
+                    if (telefoneClientePorTipoTelefone != null)
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorTipoTelefone;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return telefoneClientePorTipoTelefone;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
+        //___________________
 
         public ICollection<TelefonesCliente> PesquisarTelefonesPorDDDPersistence(byte ddd)
         {
-            try
+            if (ddd != byte.MinValue)
             {
-                List<TelefonesCliente> telefoneClientePorDDD = dataContext.TelefonesCliente.AsNoTracking()
-                                                               .Where(telefone => telefone.DDD == ddd)
-                                                               .ToList();
-                if (telefoneClientePorDDD != null)
+                try
                 {
-                    return telefoneClientePorDDD;
+                    List<TelefonesCliente> telefoneClientePorDDD = dataContext.TelefonesCliente.AsParallel()
+                                                                   .Where(telefone => telefone.DDD == ddd)
+                                                                   .ToList();
+                    if (telefoneClientePorDDD != null)
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorDDD;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return telefoneClientePorDDD;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<TelefonesCliente> PesquisarTelefonesPorNumeroPersistence(int numero)
         {
-            try
+            if (numero != 0)
             {
-                List<TelefonesCliente> telefoneClientePorNumero = dataContext.TelefonesCliente.AsNoTracking()
-                                                                  .Where(telefone => telefone.Numero == numero)
-                                                                  .ToList();
-                if (telefoneClientePorNumero != null)
+                try
                 {
-                    return telefoneClientePorNumero;
+                    List<TelefonesCliente> telefoneClientePorNumero = dataContext.TelefonesCliente.AsParallel()
+                                                                      .Where(telefone => telefone.Numero == numero)
+                                                                      .ToList();
+                    if (telefoneClientePorNumero != null)
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorNumero;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return telefoneClientePorNumero;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<TelefonesCliente> PesquisarTelefonesPorTipoTelefonePersistence(TipoTelefones tipoTelefone)
         {
-            try
+            if (tipoTelefone != 0)
             {
-                List<TelefonesCliente> telefoneClientePorTipo = dataContext.TelefonesCliente.AsNoTracking()
-                                                                .Where(telefone => telefone.TipoTelefone == tipoTelefone)
-                                                                .ToList();
-                if (telefoneClientePorTipo != null)
+                try
                 {
-                    return telefoneClientePorTipo;
+                    List<TelefonesCliente> telefoneClientePorTipo = dataContext.TelefonesCliente.AsParallel()
+                                                                    .Where(telefone => telefone.TipoTelefone == tipoTelefone)
+                                                                    .ToList();
+                    if (telefoneClientePorTipo != null)
+                    {
+                        dataContext.Dispose();
+                        return telefoneClientePorTipo;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return telefoneClientePorTipo;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

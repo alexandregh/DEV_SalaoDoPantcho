@@ -13,23 +13,26 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryClientes
 
         public void ApagarClientePorEmailLoginSenhaPersistence(string email, string login, string senha)
         {
-            try
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha))
             {
-                Clientes cliente = dataContext.Clientes.AsNoTracking()
-                                   .Where(cli => cli.Email == email && cli.Login == login && cli.Senha == senha)
-                                   .FirstOrDefault();
-                if (cliente != null)
+                try
                 {
-                    ExcluirPersistence(cliente);
+                    Clientes cliente = dataContext.Clientes.AsParallel()
+                                       .Where(cli => cli.Email == email && cli.Login == login && cli.Senha == senha)
+                                       .FirstOrDefault();
+                    if (cliente != null)
+                    {
+                        ExcluirPersistence(cliente);
+                    }
                 }
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
         }
 
@@ -45,212 +48,282 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryClientes
 
         public void TrocarSenhaPersistence(string senhaAtual, string novaSenha)
         {
-            try
+            if (!string.IsNullOrEmpty(senhaAtual) && !string.IsNullOrEmpty(novaSenha))
             {
-                Clientes cliente = dataContext.Clientes.AsNoTracking()
-                                   .Where(cli => cli.Senha == senhaAtual)
-                                   .FirstOrDefault();
-                if (cliente != null)
+                try
                 {
-                    cliente.Senha = novaSenha;
-                    AtualizarPersistence(cliente);
+                    Clientes cliente = dataContext.Clientes.AsParallel()
+                                       .Where(cli => cli.Senha == senhaAtual)
+                                       .FirstOrDefault();
+                    if (cliente != null)
+                    {
+                        cliente.Senha = novaSenha;
+                        AtualizarPersistence(cliente);
+                    }
                 }
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
         }
 
         public void ResetarSenhaClientePersistence(Int32 id, string login)
         {
-            try
+            if (id != 0 && !string.IsNullOrEmpty(login))
             {
-                Clientes cliente = dataContext.Clientes.AsNoTracking()
-                                   .Where(cli => cli.IdCliente == id)
-                                   .FirstOrDefault();
-                if(cliente != null)
+                try
                 {
-                    cliente.Senha = login;
-                    AtualizarPersistence(cliente);
+                    Clientes cliente = dataContext.Clientes.AsParallel()
+                                       .Where(cli => cli.IdCliente == id && cli.Login == login)
+                                       .FirstOrDefault();
+                    if (cliente != null)
+                    {
+                        cliente.Senha = login;
+                        AtualizarPersistence(cliente);
+                    }
                 }
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
         }
 
         public bool VerificarSenhaTemporariaPersistence(string login, string senha)
         {
-            try
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha))
             {
-                Clientes cliente = dataContext.Clientes.AsNoTracking()
-                                   .Where(cli => cli.Login == login && cli.Senha == senha)
-                                   .FirstOrDefault();                
-                if (cliente.Login == cliente.Senha)
+                try
                 {
-                    return true; // se a senha ainda estiver como temporária...
+                    Clientes cliente = dataContext.Clientes.AsParallel()
+                                       .Where(cli => cli.Login == login && cli.Senha == senha)
+                                       .FirstOrDefault();
+                    if (cliente.Login == cliente.Senha)
+                    {
+                        dataContext.Dispose();
+                        return true; // se a senha ainda estiver como temporária...
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return false;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return false;
-                }                
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                dataContext.Dispose();
+                return false;
             }
         }
 
         public void AtivarClientePersistence(string login, string senha, StatusPessoa statusPessoa)
         {
-            try
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha) && statusPessoa != 0)
             {
-                Clientes cliente = dataContext.Clientes.AsNoTracking()
-                                   .Where(cli => cli.Login == login && cli.Senha == senha)
-                                   .FirstOrDefault();
-                cliente.StatusPessoa = StatusPessoa.Ativo;
-                AtualizarPersistence(cliente);
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                try
+                {
+                    Clientes cliente = dataContext.Clientes.AsParallel()
+                                       .Where(cli => cli.Login == login && cli.Senha == senha)
+                                       .FirstOrDefault();
+                    cliente.StatusPessoa = StatusPessoa.Ativo;
+                    AtualizarPersistence(cliente);
+                }
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
         }
 
         public void DesativarClientePersistence(string login, string senha, StatusPessoa statusPessoa)
         {
-            try
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha) && statusPessoa != 0)
             {
-                Clientes cliente = dataContext.Clientes.Where(cli => cli.Login == login && cli.Senha == senha)
-                                   .FirstOrDefault();
-                cliente.StatusPessoa = StatusPessoa.Inativo;
-                AtualizarPersistence(cliente);
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                try
+                {
+                    Clientes cliente = dataContext.Clientes.AsParallel()
+                                       .Where(cli => cli.Login == login && cli.Senha == senha)
+                                       .FirstOrDefault();
+                    cliente.StatusPessoa = StatusPessoa.Inativo;
+                    AtualizarPersistence(cliente);
+                }
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
         }
 
         public Clientes PesquisarClientePorNomeApelidoEmailPersistence(string nomeApelido, string email)
         {
-            try
+            if (!string.IsNullOrEmpty(nomeApelido) && !string.IsNullOrEmpty(email))
             {
-                Clientes clientePorNome = dataContext.Clientes.AsNoTracking()
-                                          .Where(cli => cli.Nome == nomeApelido && cli.Email == email)
-                                          .FirstOrDefault();
-                if(clientePorNome != null)
+                try
                 {
-                    return clientePorNome;
+                    Clientes clientePorNome = dataContext.Clientes.AsParallel()
+                                              .Where(cli => cli.Nome == nomeApelido && cli.Email == email)
+                                              .FirstOrDefault();
+                    if (clientePorNome != null)
+                    {
+                        dataContext.Dispose();
+                        return clientePorNome;
+                    }
+                    else
+                    {
+                        Clientes clientePorApelido = dataContext.Clientes.AsParallel()
+                                                     .Where(cli => cli.Apelido == nomeApelido && cli.Email == email)
+                                                     .FirstOrDefault();
+                        dataContext.Dispose();
+                        return clientePorApelido;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    Clientes clientePorApelido = dataContext.Clientes.AsNoTracking()
-                                                 .Where(cli => cli.Apelido == nomeApelido && cli.Email == email)
-                                                 .FirstOrDefault();
-                    return clientePorApelido;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                dataContext.Dispose();
+                return null;
             }
         }
 
         public Clientes PesquisarClientePorLoginEmailPersistence(string login, string email)
         {
-            try
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(email))
             {
-                Clientes clientePorLoginEmail = dataContext.Clientes.AsNoTracking()
-                                                .Where(cliente => cliente.Login == login || cliente.Email == email)
-                                                .FirstOrDefault();
-                if(clientePorLoginEmail != null)
+                try
                 {
-                    return clientePorLoginEmail;
+                    Clientes clientePorLoginEmail = dataContext.Clientes.AsParallel()
+                                                    .Where(cliente => cliente.Login == login || cliente.Email == email)
+                                                    .FirstOrDefault();
+                    if (clientePorLoginEmail != null)
+                    {
+                        dataContext.Dispose();
+                        return clientePorLoginEmail;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return clientePorLoginEmail;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return clientePorLoginEmail;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                dataContext.Dispose();
+                return null;
             }
         }
 
         public Clientes PesquisarClientePorLoginSenhaPersistence(string login, string senha)
         {
-            try
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(senha))
             {
-                Clientes clientePorLoginSenha = dataContext.Clientes.AsNoTracking()
-                                                .Where(cliente => cliente.Login == login && cliente.Senha == senha)
-                                                .FirstOrDefault();
-                return clientePorLoginSenha;
+                try
+                {
+                    Clientes clientePorLoginSenha = dataContext.Clientes.AsParallel()
+                                                    .Where(cliente => cliente.Login == login && cliente.Senha == senha)
+                                                    .FirstOrDefault();
+                    if (clientePorLoginSenha != null)
+                    {
+                        dataContext.Dispose();
+                        return clientePorLoginSenha;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return clientePorLoginSenha;
+                    }
+                }
+                catch (ArgumentNullException ex)
+                {
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
+                }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                dataContext.Dispose();
+                return null;
             }
         }
 
         public Clientes PesquisarClientePorLoginPersistence(string login)
         {
-            try
+            if (!string.IsNullOrEmpty(login))
             {
-                Clientes clientePorLogin = dataContext.Clientes.AsNoTracking()
-                                           .Where(cliente => cliente.Login == login)
-                                           .FirstOrDefault();
-                if(clientePorLogin != null)
+                try
                 {
-                    return clientePorLogin;
+                    Clientes clientePorLogin = dataContext.Clientes.AsParallel()
+                                               .Where(cliente => cliente.Login == login)
+                                               .FirstOrDefault();
+                    if (clientePorLogin != null)
+                    {
+                        dataContext.Dispose();
+                        return clientePorLogin;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return clientePorLogin;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    return clientePorLogin;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                dataContext.Dispose();
+                return null;
             }
         }
 

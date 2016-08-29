@@ -29,50 +29,22 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public ICollection<Produtos> PesquisarProdutoPorDataFabricanteService(DateTime dataFabricante)
         {
-            try
-            {
-                return servicoProduto.PesquisarProdutoPorDataFabricantePersistence(dataFabricante);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoProduto.PesquisarProdutoPorDataFabricantePersistence(dataFabricante);
         }
 
         public ICollection<Produtos> PesquisarProdutoPorDataValidadeService(DateTime dataValidade)
         {
-            try
-            {
-                return servicoProduto.PesquisarProdutoPorDataValidadePersistence(dataValidade);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoProduto.PesquisarProdutoPorDataValidadePersistence(dataValidade);
         }
 
         public ICollection<Produtos> PesquisarProdutoPorFabricanteService(string fabricante)
         {
-            try
-            {
-                return servicoProduto.PesquisarProdutoPorFabricantePersistence(fabricante);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoProduto.PesquisarProdutoPorFabricantePersistence(fabricante);
         }
 
         public Produtos PesquisarProdutoPorNomeService(string nome)
         {
-            try
-            {
-                return servicoProduto.PesquisarProdutoPorNomePercistence(nome);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoProduto.PesquisarProdutoPorNomePercistence(nome);
         }
 
         #endregion

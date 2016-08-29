@@ -28,26 +28,12 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public DatasComemorativas PesquisarDatasComemorativasPorDescricaoService(string descricao)
         {
-            try
-            {
-                return servicoDataComemorativa.PesquisarDatasComemorativasPorDescricaoPersistence(descricao);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoDataComemorativa.PesquisarDatasComemorativasPorDescricaoPersistence(descricao);
         }
 
         public DatasComemorativas PesquisarDatasComemorativasPorDescricaoEDataComemorativaService(string descricao, DateTime dataComemorativa)
         {
-            try
-            {
-                return servicoDataComemorativa.PesquisarDatasComemorativasPorDescricaoEDataComemorativaPersistence(descricao, dataComemorativa);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoDataComemorativa.PesquisarDatasComemorativasPorDescricaoEDataComemorativaPersistence(descricao, dataComemorativa);
         }
 
         #endregion

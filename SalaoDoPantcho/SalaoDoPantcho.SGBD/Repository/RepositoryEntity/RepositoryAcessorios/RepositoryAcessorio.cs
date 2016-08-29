@@ -12,27 +12,36 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryAcessorios
 
         public Acessorios PesquisarAcessorioPorNomePersistence(string nome)
         {
-            try
+            if (!string.IsNullOrEmpty(nome))
             {
-                Acessorios acessorioPorNome = this.dataContext.Acessorios.AsNoTracking().Where(acessorio => acessorio.Nome == nome).FirstOrDefault();
-                if (acessorioPorNome != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return acessorioPorNome;
+                    Acessorios acessorioPorNome = dataContext.Acessorios.AsParallel()
+                                                  .Where(acessorio => acessorio.Nome == nome)
+                                                  .FirstOrDefault();
+                    if (acessorioPorNome != null)
+                    {
+                        dataContext.Dispose();
+                        return acessorioPorNome;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return acessorioPorNome;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

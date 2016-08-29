@@ -12,55 +12,71 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryDatasComemor
 
         public DatasComemorativas PesquisarDatasComemorativasPorDescricaoPersistence(string descricao)
         {
-            try
+            if (!string.IsNullOrEmpty(descricao))
             {
-                DatasComemorativas datasComemorativasPorDescricao = this.dataContext.DatasComemorativas.AsNoTracking().Where(data => data.Descricao == descricao).FirstOrDefault();
-                if (datasComemorativasPorDescricao != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return datasComemorativasPorDescricao;
+                    DatasComemorativas datasComemorativasPorDescricao = dataContext.DatasComemorativas.AsParallel()
+                                                                        .Where(data => data.Descricao == descricao)
+                                                                        .FirstOrDefault();
+                    if (datasComemorativasPorDescricao != null)
+                    {
+                        dataContext.Dispose();
+                        return datasComemorativasPorDescricao;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return datasComemorativasPorDescricao;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return datasComemorativasPorDescricao;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public DatasComemorativas PesquisarDatasComemorativasPorDescricaoEDataComemorativaPersistence(string descricao, DateTime dataComemorativa)
         {
-            try
+            if (!string.IsNullOrEmpty(descricao) && dataComemorativa != null)
             {
-                DatasComemorativas datasComemorativasacessorioPorDescricao = this.dataContext.DatasComemorativas.AsNoTracking()
-                                                                             .Where(data => data.Descricao == descricao && data.DataComemorativa == dataComemorativa)
-                                                                             .FirstOrDefault();
-                if (datasComemorativasacessorioPorDescricao != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return datasComemorativasacessorioPorDescricao;
+                    DatasComemorativas datasComemorativasacessorioPorDescricao = dataContext.DatasComemorativas.AsParallel()
+                                                                                 .Where(data => data.Descricao == descricao && data.DataComemorativa == dataComemorativa)
+                                                                                 .FirstOrDefault();
+                    if (datasComemorativasacessorioPorDescricao != null)
+                    {
+                        dataContext.Dispose();
+                        return datasComemorativasacessorioPorDescricao;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return datasComemorativasacessorioPorDescricao;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return datasComemorativasacessorioPorDescricao;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

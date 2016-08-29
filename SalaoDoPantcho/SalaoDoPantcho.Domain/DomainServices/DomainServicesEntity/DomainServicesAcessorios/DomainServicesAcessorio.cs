@@ -28,14 +28,7 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public Acessorios PesquisarAcessorioPorNomeService(string nome)
         {
-            try
-            {
-                return servicoAcessorio.PesquisarAcessorioPorNomePersistence(nome);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoAcessorio.PesquisarAcessorioPorNomePersistence(nome);
         }
 
         #endregion

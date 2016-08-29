@@ -28,12 +28,12 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesDatasComem
 
         public DatasComemorativas AppServicesPesquisarDatasComemorativasPorDescricao(string descricao)
         {
-            return this.appServicesDatasComemorativas.PesquisarDatasComemorativasPorDescricaoService(descricao);
+            return appServicesDatasComemorativas.PesquisarDatasComemorativasPorDescricaoService(descricao);
         }
 
         public DatasComemorativas AppServicesPesquisarDatasComemorativasPorDescricaoEDataComemorativa(string descricao, DateTime dataComemorativa)
         {
-            return this.appServicesDatasComemorativas.PesquisarDatasComemorativasPorDescricaoEDataComemorativaService(descricao, dataComemorativa);
+            return appServicesDatasComemorativas.PesquisarDatasComemorativasPorDescricaoEDataComemorativaService(descricao, dataComemorativa);
         }
 
         #endregion

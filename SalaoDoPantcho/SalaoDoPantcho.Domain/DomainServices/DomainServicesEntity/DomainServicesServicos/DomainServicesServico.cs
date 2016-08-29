@@ -29,39 +29,18 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
         #region Implementação Métodos Serviços
 
         public ICollection<Servicos> PesquisarServicosPorGeneroService(GeneroServico generoServico)
-        {
-            try
-            {
-                return servicoServico.PesquisarServicosPorGeneroPersistence(generoServico);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {           
+            return servicoServico.PesquisarServicosPorGeneroPersistence(generoServico);
         }
 
         public Servicos PesquisarServicosPorNomeService(string nome)
         {
-            try
-            {
-                return servicoServico.PesquisarServicosPorNomePersistence(nome);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoServico.PesquisarServicosPorNomePersistence(nome);
         }
 
         public ICollection<Servicos> PesquisarServicosPorPrecoService(decimal preco)
-        {
-            try
-            {
-                return servicoServico.PesquisarServicosPorPrecoPersistence(preco);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoServico.PesquisarServicosPorPrecoPersistence(preco);
         }
 
         #endregion

@@ -13,105 +13,141 @@ namespace SalaoDoPantcho.SGBD.Repository.RepositoryEntity.RepositoryPromocoes
 
         public Promocoes PesquisarPromocaoPorNomePersistence(string nome)
         {
-            try
+            if(!string.IsNullOrEmpty(nome))
             {
-                Promocoes promocaoPorNome = this.dataContext.Promocoes.AsNoTracking().Where(promocao => promocao.Nome == nome).FirstOrDefault();
-                if (promocaoPorNome != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorNome;
+                    Promocoes promocaoPorNome = dataContext.Promocoes.AsParallel()
+                                                .Where(promocao => promocao.Nome == nome)
+                                                .FirstOrDefault();
+                    if (promocaoPorNome != null)
+                    {
+                        dataContext.Dispose();
+                        return promocaoPorNome;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorNome;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<Promocoes> PesquisarPromocoesPorDataInicioPersistence(DateTime dataInicio)
         {
-            try
+            if (dataInicio != null)
             {
-                List<Promocoes> promocaoPorDataInicio = this.dataContext.Promocoes.AsNoTracking().Where(promocao => promocao.DataInicio == dataInicio).ToList();
-                if (promocaoPorDataInicio != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorDataInicio;
+                    List<Promocoes> promocaoPorDataInicio = dataContext.Promocoes.AsParallel()
+                                                            .Where(promocao => promocao.DataInicio == dataInicio)
+                                                            .ToList();
+                    if (promocaoPorDataInicio != null)
+                    {
+                        dataContext.Dispose();
+                        return promocaoPorDataInicio;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorDataInicio;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<Promocoes> PesquisarPromocoesPorDataFimPersistence(DateTime dataFim)
         {
-            try
+            if (dataFim != null)
             {
-                List<Promocoes> promocaoPorDataFim = this.dataContext.Promocoes.AsNoTracking().Where(promocao => promocao.DataFim == dataFim).ToList();
-                if (promocaoPorDataFim != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorDataFim;
+                    List<Promocoes> promocaoPorDataFim = dataContext.Promocoes.AsParallel()
+                                                        .Where(promocao => promocao.DataFim == dataFim)
+                                                        .ToList();
+                    if (promocaoPorDataFim != null)
+                    {
+                        dataContext.Dispose();
+                        return promocaoPorDataFim;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorDataFim;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 
         public ICollection<Promocoes> PesquisarPromocoesPorDataInicioFimPersistence(DateTime dataInicio, DateTime dataFim)
         {
-            try
+            if (dataInicio != null && dataFim != null)
             {
-                List<Promocoes> promocaoPorDataInicioFim = this.dataContext.Promocoes.AsNoTracking().Where(promocao => promocao.DataInicio == dataInicio && promocao.DataFim == dataFim).ToList();
-                if (promocaoPorDataInicioFim != null)
+                try
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorDataInicioFim;
+                    List<Promocoes> promocaoPorDataInicioFim = dataContext.Promocoes.AsParallel()
+                                                               .Where(promocao => promocao.DataInicio == dataInicio && promocao.DataFim == dataFim)
+                                                               .ToList();
+                    if (promocaoPorDataInicioFim != null)
+                    {
+                        dataContext.Dispose();
+                        return promocaoPorDataInicioFim;
+                    }
+                    else
+                    {
+                        dataContext.Dispose();
+                        return null;
+                    }
                 }
-                else
+                catch (ArgumentNullException ex)
                 {
-                    this.dataContext.Dispose();
-                    return promocaoPorDataInicioFim;
+                    throw new ArgumentNullException(nameof(ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(nameof(ex.Message));
                 }
             }
-            catch (ArgumentNullException ex)
+            else
             {
-                throw new ArgumentNullException("Ocorreu o erro: " + ex.Message + ". Aguarde alguns instantes e tente novamente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu o seguinte erro desconhecido: " + ex.Message + ". Aguarde alguns instantes e tente novamente ou contate o Suporte do Sistema.");
+                return null;
             }
         }
 

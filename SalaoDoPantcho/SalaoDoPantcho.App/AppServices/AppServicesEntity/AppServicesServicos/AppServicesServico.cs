@@ -30,17 +30,17 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesServicos
 
         public ICollection<Servicos> AppServicesPesquisarServicosPorGenero(GeneroServico generoServico)
         {
-            return this.appServicesServico.PesquisarServicosPorGeneroService(generoServico);
+            return appServicesServico.PesquisarServicosPorGeneroService(generoServico);
         }
 
         public Servicos AppServicesPesquisarServicosPorNome(string nome)
         {
-            return this.appServicesServico.PesquisarServicosPorNomeService(nome);
+            return appServicesServico.PesquisarServicosPorNomeService(nome);
         }
 
         public ICollection<Servicos> AppServicesPesquisarServicosPorPreco(decimal preco)
         {
-            return this.appServicesServico.PesquisarServicosPorPrecoService(preco);
+            return appServicesServico.PesquisarServicosPorPrecoService(preco);
         }
 
         #endregion

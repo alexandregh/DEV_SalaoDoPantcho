@@ -29,22 +29,22 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesProdutos
 
         public ICollection<Produtos> AppServicesPesquisarProdutoPorDataFabricante(DateTime dataFabricante)
         {
-            return this.appServicesProduto.PesquisarProdutoPorDataFabricanteService(dataFabricante);
+            return appServicesProduto.PesquisarProdutoPorDataFabricanteService(dataFabricante);
         }
 
         public ICollection<Produtos> AppServicesPesquisarProdutoPorDataValidade(DateTime dataValidade)
         {
-            return this.appServicesProduto.PesquisarProdutoPorDataValidadeService(dataValidade);
+            return appServicesProduto.PesquisarProdutoPorDataValidadeService(dataValidade);
         }
 
         public ICollection<Produtos> AppServicesPesquisarProdutoPorFabricante(string fabricante)
         {
-            return this.appServicesProduto.PesquisarProdutoPorFabricanteService(fabricante);
+            return appServicesProduto.PesquisarProdutoPorFabricanteService(fabricante);
         }
 
         public Produtos AppServicesPesquisarProdutoPorNome(string nome)
         {
-            return this.appServicesProduto.PesquisarProdutoPorNomeService(nome);
+            return appServicesProduto.PesquisarProdutoPorNomeService(nome);
         }
 
         #endregion

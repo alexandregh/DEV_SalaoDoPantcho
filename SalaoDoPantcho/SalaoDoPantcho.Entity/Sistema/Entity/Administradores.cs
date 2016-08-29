@@ -9,7 +9,7 @@ namespace SalaoDoPantcho.Entity.Sistema.Entity
 
         public Administradores()
         {
-            //this.TelefonesAdministrador = new List<TelefonesAdministrador>();
+            //.TelefonesAdministrador = new List<TelefonesAdministrador>();
         }
 
         #endregion

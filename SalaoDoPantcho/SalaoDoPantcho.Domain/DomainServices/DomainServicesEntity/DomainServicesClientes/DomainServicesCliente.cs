@@ -29,146 +29,63 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public void ApagarClientePorEmailLoginSenhaService(string email, string login, string senha)
         {
-            try
-            {
-                servicoCliente.ApagarClientePorEmailLoginSenhaPersistence(email, login, senha);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoCliente.ApagarClientePorEmailLoginSenhaPersistence(email, login, senha);
         }
 
         public void LoginSistemaService(string login, string senha)
         {
-            try
-            {
-                servicoCliente.LoginSistemaPersistence(login, senha);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoCliente.LoginSistemaPersistence(login, senha);
         }
 
         public void LogoutSistemaService()
         {
-            try
-            {
-                servicoCliente.LogoutSistemaPersistence();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoCliente.LogoutSistemaPersistence();
         }
 
         public void TrocarSenhaService(string senhaAtual, string novaSenha)
         {
-            try
-            {
-                this.servicoCliente.TrocarSenhaPersistence(senhaAtual, novaSenha);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            this.servicoCliente.TrocarSenhaPersistence(senhaAtual, novaSenha);
         }
 
         public bool VerificarSenhaTemporariaService(string login, string senha)
         {
-            try
-            {
-                return servicoCliente.VerificarSenhaTemporariaPersistence(login, senha);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoCliente.VerificarSenhaTemporariaPersistence(login, senha);
         }
 
         public void ResetarSenhaClienteService(Int32 id, string login)
         {
-            try
-            {
-                servicoCliente.ResetarSenhaClientePersistence(id, login);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoCliente.ResetarSenhaClientePersistence(id, login);
         }
 
         public void AtivarClienteService(string login, string senha, StatusPessoa StatusPessoa)
         {
-            try
-            {
-                servicoCliente.AtivarClientePersistence(login, senha, StatusPessoa);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoCliente.AtivarClientePersistence(login, senha, StatusPessoa);
         }
 
         public void DesativarClienteService(string login, string senha, StatusPessoa statusPessoa)
         {
-            try
-            {
-                servicoCliente.DesativarClientePersistence(login, senha, statusPessoa);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            servicoCliente.DesativarClientePersistence(login, senha, statusPessoa);
         }
 
         public Clientes PesquisarClientePorNomeApelidoEmailService(string nomeApelido, string email)
         {
-            try
-            {
-                return servicoCliente.PesquisarClientePorNomeApelidoEmailPersistence(nomeApelido, email);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            
+            return servicoCliente.PesquisarClientePorNomeApelidoEmailPersistence(nomeApelido, email);
         }
 
         public Clientes PesquisarClientePorLoginEmailService(string login, string email)
         {
-            try
-            {
-                return servicoCliente.PesquisarClientePorLoginEmailPersistence(login, email);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoCliente.PesquisarClientePorLoginEmailPersistence(login, email);
         }
 
         public Clientes PesquisarClientePorLoginSenhaService(string login, string senha)
         {
-            try
-            {
-                return servicoCliente.PesquisarClientePorLoginSenhaPersistence(login, senha);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoCliente.PesquisarClientePorLoginSenhaPersistence(login, senha);
         }
 
         public Clientes PesquisarClientePorLoginService(string login)
         {
-            try
-            {
-                return servicoCliente.PesquisarClientePorLoginPersistence(login);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoCliente.PesquisarClientePorLoginPersistence(login);
         }
 
         #endregion

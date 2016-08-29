@@ -30,76 +30,34 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
 
         public EnderecosCliente PesquisarEnderecoPorTipoEnderecoService(TipoEnderecos tipoEndereco)
         {
-            try
-            {
-                return servicoEnderecosCliente.PesquisarEnderecoPorTipoEnderecoPersistence(tipoEndereco);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoEnderecosCliente.PesquisarEnderecoPorTipoEnderecoPersistence(tipoEndereco);
         }
 
         public EnderecosCliente PesquisarEnderecoPorBairroService(string bairro)
-        {
-            try
-            {
-                return servicoEnderecosCliente.PesquisarEnderecoPorBairroPersistence(bairro);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoEnderecosCliente.PesquisarEnderecoPorBairroPersistence(bairro);
         }
 
         public EnderecosCliente PesquisarEnderecoPorCepService(string cep)
         {
-            try
-            {
-                return servicoEnderecosCliente.PesquisarEnderecoPorCepPersistence(cep);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoEnderecosCliente.PesquisarEnderecoPorCepPersistence(cep);
         }
 
         //__________
 
         public ICollection<EnderecosCliente> PesquisarEnderecosPorBairroService(string bairro)
-        {
-            try
-            {
-                return servicoEnderecosCliente.PesquisarEnderecosPorBairroPersistence(bairro);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoEnderecosCliente.PesquisarEnderecosPorBairroPersistence(bairro);
         }
 
         public ICollection<EnderecosCliente> PesquisarEnderecosPorCepService(string cep)
         {
-            try
-            {
-                return servicoEnderecosCliente.PesquisarEnderecosPorCepPersistence(cep);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoEnderecosCliente.PesquisarEnderecosPorCepPersistence(cep);
         }
 
         public ICollection<EnderecosCliente> PesquisarEnderecosPorTipoEnderecosService(TipoEnderecos tipoEndereco)
         {
-            try
-            {
-                return servicoEnderecosCliente.PesquisarEnderecosPorTipoEnderecosPersistence(tipoEndereco);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoEnderecosCliente.PesquisarEnderecosPorTipoEnderecosPersistence(tipoEndereco);
         }
 
         #endregion

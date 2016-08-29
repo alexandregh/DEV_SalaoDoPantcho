@@ -28,51 +28,23 @@ namespace SalaoDoPantcho.Domain.DomainServices.DomainServicesEntity.DomainServic
         #region Implementação Métodos Serviços
 
         public Promocoes PesquisarPromocaoPorNomeService(string nome)
-        {
-            try
-            {
-                return servicoPromocao.PesquisarPromocaoPorNomePersistence(nome);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoPromocao.PesquisarPromocaoPorNomePersistence(nome);
         }
 
         public ICollection<Promocoes> PesquisarPromocoesPorDataFimService(DateTime dataFim)
         {
-            try
-            {
-                return servicoPromocao.PesquisarPromocoesPorDataFimPersistence(dataFim);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoPromocao.PesquisarPromocoesPorDataFimPersistence(dataFim);
         }
 
         public ICollection<Promocoes> PesquisarPromocoesPorDataInicioFimService(DateTime dataInicio, DateTime dataFim)
-        {
-            try
-            {
-                return servicoPromocao.PesquisarPromocoesPorDataInicioFimPersistence(dataInicio, dataFim);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+        {            
+            return servicoPromocao.PesquisarPromocoesPorDataInicioFimPersistence(dataInicio, dataFim);            
         }
 
         public ICollection<Promocoes> PesquisarPromocoesPorDataInicioService(DateTime dataInicio)
         {
-            try
-            {
-                return servicoPromocao.PesquisarPromocoesPorDataInicioPersistence(dataInicio);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            return servicoPromocao.PesquisarPromocoesPorDataInicioPersistence(dataInicio);
         }
 
         #endregion

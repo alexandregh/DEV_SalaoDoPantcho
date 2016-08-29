@@ -28,22 +28,22 @@ namespace SalaoDoPantcho.App.AppServices.AppServicesEntity.AppServicesAdministra
 
         public void AppServicesVincularClienteAProdutos(string login, string email)
         {
-            this.appServicesAdministrador.VincularClienteAProdutosService(login, email);
+            appServicesAdministrador.VincularClienteAProdutosService(login, email);
         }
 
         public void AppServicesVincularClienteAPromocao(string login, string email)
         {
-            this.appServicesAdministrador.VincularClienteAPromocaoService(login, email);
+            appServicesAdministrador.VincularClienteAPromocaoService(login, email);
         }
 
         public void AppServicesVincularClienteAPromocaoDatasComemorativas(string login, string email)
         {
-            this.appServicesAdministrador.VincularClienteAPromocaoDatasComemorativasService(login, email);
+            appServicesAdministrador.VincularClienteAPromocaoDatasComemorativasService(login, email);
         }
 
         public void AppServicesVincularClienteAServico(string login, string email)
         {
-            this.appServicesAdministrador.VincularClienteAServicoService(login, email);
+            appServicesAdministrador.VincularClienteAServicoService(login, email);
         }
 
         #endregion
