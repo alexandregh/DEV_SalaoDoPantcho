@@ -1,6 +1,6 @@
 # Salão do Pantcho
 ### Sistema Web - Salão do Pantcho
-###### Versão 1.0
+###### Versão 1.5
 
 ###### Descrição:
 <p>Projeto Web de um Salão Barbershop chamado Salão do Pantcho.</p>
@@ -38,4 +38,5 @@
 **2.4.2.3 - Camada de Conversão**<br />
 **2.4.3 - Camada de Regras de Negócio**<br /><br>
 **(1)**: No DDD - Domain Driven Design disposto por Eric Evans todas as Entidades (Objetos) de Negócio - Classes e Enums - da Aplicação e suas Regras de Negócio como Associações, Restrições e outras Regras ficam dispostas sempre na Camada de Domínio (Domain Layer) da aplicação o que é a maneira padrão de se implementar o DDD - Domain Driven Design.<br />Optei por dispor a Camada de Entidades fora da Camada do Sistema e consequentemente fora da Camada de Domínio (Domain Layer) por essas Entidades (Objetos) de Negócio estarem externos a implementação do sistema pois independente do sistema existir na forma de aplicação, Entidades (Objetos) de Negócio e suas Regras sempre existirão no Contexto de Negócio.<br />
-**Cross-Cutting Concerns**: São funcionalidades que não estão diretamente relacionadas ao domínio da aplicação ou às suas respectivas regras de negócio, mas que ainda sim, são importantes para o Software. Exemplos: envio de emails, criptografia de senhas, etc.
+**Cross-Cutting Concerns**: São funcionalidades que não estão diretamente relacionadas ao domínio da aplicação ou às suas respectivas regras de negócio, mas que ainda sim, são importantes para o Software. Exemplos: envio de emails, criptografia de senhas, etc.<br />
+**Observação**: Durante o desenvolvimento da aplicação foi usado a ferramenta do Visual Studio para análise estática de código chamada Code Analysis.
